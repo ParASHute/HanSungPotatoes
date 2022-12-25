@@ -1,23 +1,18 @@
-/* baekjoon 2355 시간초과 */
+/* baekjoon 2355 정답(시그마 공식) */
 
 #include <stdio.h>
 
 int main() {
     
-    int a, b, sum = 0;
+    long long a, b, sum = 0;
     
-    scanf("%d %d",&a,&b);
+    scanf("%lld %lld",&a,&b);
     
-    if(a<b){
-        for(int i = a; i <= b; i++){
-            sum += i;
-        }
-    }
+    if(a<b)
+        sum = (b - a + 1) * (b + a) / 2;
     
     else
-        for(int i = b; i <= a; i ++){
-            sum += i;
-        }
+        sum = (a - b + 1) * (b + a) / 2;
     
-    printf("%d", sum);
+    printf("%lld", sum);
 }
