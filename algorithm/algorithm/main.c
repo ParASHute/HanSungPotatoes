@@ -1,9 +1,12 @@
-/* baekjoon 2355 시간초과(함수) */
+/* baekjoon 2355 시간초과 */
 
 #include <stdio.h>
 
-int aSb(int a, int b){
-    int sum = 0;
+int main() {
+    
+    int a, b, sum = 0;
+    
+    scanf("%d %d",&a,&b);
     
     if(a<b){
         for(int i = a; i <= b; i++){
@@ -15,16 +18,6 @@ int aSb(int a, int b){
         for(int i = b; i <= a; i ++){
             sum += i;
         }
-    return sum;
-}
-
-int main() {
     
-    int a, b, ans;
-    
-    scanf("%d %d",&a,&b);
-    
-    ans = aSb(a, b);
-    
-    printf("%d", ans);
+    printf("%d", sum);
 }
