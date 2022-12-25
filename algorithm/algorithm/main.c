@@ -1,44 +1,30 @@
-/* backjoon 2721 정답 */
+/* baekjoon 2355 시간초과(함수) */
 
 #include <stdio.h>
-#define MAX 3000
 
-int Tn(int a){
-
+int aSb(int a, int b){
     int sum = 0;
-
-    for(int i = 1; i <= a; i++){
-        sum += i;
-    }
-
-    return sum;
-}
-
-int Wn(int n){
-
-    int wn = 0;
-
-    for(int i = 1; i <= n; i ++){
-        wn += i * Tn(i+1);
+    
+    if(a<b){
+        for(int i = a; i <= b; i++){
+            sum += i;
+        }
     }
     
-    return wn;
+    else
+        for(int i = b; i <= a; i ++){
+            sum += i;
+        }
+    return sum;
 }
 
 int main() {
     
-    int count, k;
-    int arr[MAX] = {0};
+    int a, b, ans;
     
-    scanf("%d", &count);
-
-    for(int i = 0; i < count; i++){
-        scanf("%d", &k);
-        arr[i] = k;
-    }
+    scanf("%d %d",&a,&b);
     
-    for(int i = 0; i < count; i++){
-        k = arr[i];
-        printf("%d\n", Wn(k));
-    }
+    ans = aSb(a, b);
+    
+    printf("%d", ans);
 }
