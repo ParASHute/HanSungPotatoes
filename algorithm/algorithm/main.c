@@ -1,18 +1,38 @@
-/* baekjoon 2355 정답(시그마 공식) */
+/* baekjoon 1006 정답 */
 
 #include <stdio.h>
+#define MAX 1000000
+
+int expon(int a, int b){
+    
+    int x = 1;
+    for(int i = 0; i < b; i++){
+        x *= a;
+        x = x % 10;
+    }
+    
+    return x;
+}
 
 int main() {
     
-    long long a, b, sum = 0;
+    int a, b, count;
+    int ans;
+    int arr[MAX] = {0};
     
-    scanf("%lld %lld",&a,&b);
+    scanf("%d", &count);
     
-    if(a<b)
-        sum = (b - a + 1) * (b + a) / 2;
+    for(int i = 0; i < count; i++){
+        scanf("%d %d",&a, &b);
+        arr[i] = expon(a, b);
+    }
     
-    else
-        sum = (a - b + 1) * (b + a) / 2;
-    
-    printf("%lld", sum);
+    for(int i = 0; i < count; i++){
+        
+        ans = arr[i];
+        if(ans == 0)
+            printf("10\n");
+        else
+            printf("%d\n", ans);
+    }
 }
