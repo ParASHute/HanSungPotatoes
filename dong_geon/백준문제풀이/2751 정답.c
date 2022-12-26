@@ -11,18 +11,17 @@ int static compare(const void* first, const void* second)
         return 0;
 }
 
-int arr[1000001];  
+int arr[1000001];
 
 int main(void)
 {
     int n;
     scanf("%d", &n);
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
         scanf("%d", &arr[i]);
-    }
+
     qsort(arr, n, 4, compare);
+    
     for (int i = 0; i < n; i++)
         printf("%d\n", arr[i]);
 }
-
-
