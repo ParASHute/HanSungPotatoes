@@ -2,19 +2,16 @@
 #include <stdio.h>
 
 int main() {
-	int A, B, C = 0;
+	int A, B, C, val = 0;
 	scanf("%d %d %d", &A, &B, &C);
-	
-	if (B >= C)
+	val = C - B;
+	if (val<=0)
 	{
 		printf("-1");
 	}
-	for (int i = 1; i <= A+1; i++)
+	else
 	{
-		if (A + B * i == C * i) {
-			printf("%d", i + 1);
-			break;
-		}
+		printf("%d", A / val + 1);
 	}
 	return 0;
 }
