@@ -1,57 +1,38 @@
-/* 1672 DNA 해독 : 못풀었음 */
+/* 백준 1212 8진수 2진수*/
 
 #include <stdio.h>
-#define MAX 1000000
-int main(){
+#include <string.h>
+
+int main(void) {
+    char p[333335];
+    unsigned long a;
     
-    int count;
-    char dna;
-    char DNA[MAX];
+    scanf("%s", p);
     
-    scanf("%d",&count);
-    
-    for(int i = 0; i < count; i++){
-        scanf("%c",&dna);
-        DNA[i] = dna;
+    switch (p[0]) {
+    case '0': printf("%s", "0"); break;
+    case '1': printf("%s", "1"); break;
+    case '2': printf("%s", "10"); break;
+    case '3': printf("%s", "11"); break;
+    case '4': printf("%s", "100"); break;
+    case '5': printf("%s", "101"); break;
+    case '6': printf("%s", "110"); break;
+    case '7': printf("%s", "111"); break;
     }
     
-    for(int i = count - 2; i < 0; i--){
-        if(DNA[i] == 'AA')
-            DNA[i] = 'A';
-        if(DNA[i] == 'AG')
-            DNA[i] = 'A';
-        if(DNA[i] == 'AC')
-            DNA[i] = 'A';
-        if(DNA[i] == 'AT')
-            DNA[i] = 'A';
-        
-        if(DNA[i] == 'GA')
-            DNA[i] = 'A';
-        if(DNA[i] == 'GG')
-            DNA[i] = 'A';
-        if(DNA[i] == 'GC')
-            DNA[i] = 'A';
-        if(DNA[i] == 'GT')
-            DNA[i] = 'A';
-        
-        if(DNA[i] == 'CA')
-            DNA[i] = 'A';
-        if(DNA[i] == 'CG')
-            DNA[i] = 'A';
-        if(DNA[i] == 'CC')
-            DNA[i] = 'A';
-        if(DNA[i] == 'CT')
-            DNA[i] = 'A';
-        
-        if(DNA[i] == 'TA')
-            DNA[i] = 'A';
-        if(DNA[i] == 'TG')
-            DNA[i] = 'A';
-        if(DNA[i] == 'TC')
-            DNA[i] = 'A';
-        if(DNA[i] == 'TT')
-            DNA[i] = 'A';
+    a = strlen(p);
+
+    for (int i = 1; i < a; i++) {
+        switch (p[i]) {
+        case '0': printf("%s", "000"); break;
+        case '1': printf("%s", "001"); break;
+        case '2': printf("%s", "010"); break;
+        case '3': printf("%s", "011"); break;
+        case '4': printf("%s", "100"); break;
+        case '5': printf("%s", "101"); break;
+        case '6': printf("%s", "110"); break;
+        case '7': printf("%s", "111"); break;
+        }
     }
     
-    printf("%c\n",&DNA);
 }
