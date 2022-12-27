@@ -1,38 +1,38 @@
-/* baekjoon 1006 정답 */
+/* 백준 1212 8진수 2진수*/
 
 #include <stdio.h>
-#define MAX 1000000
+#include <string.h>
 
-int expon(int a, int b){
+int main(void) {
+    char p[333335];
+    unsigned long a;
     
-    int x = 1;
-    for(int i = 0; i < b; i++){
-        x *= a;
-        x = x % 10;
+    scanf("%s", p);
+    
+    switch (p[0]) {
+    case '0': printf("%s", "0"); break;
+    case '1': printf("%s", "1"); break;
+    case '2': printf("%s", "10"); break;
+    case '3': printf("%s", "11"); break;
+    case '4': printf("%s", "100"); break;
+    case '5': printf("%s", "101"); break;
+    case '6': printf("%s", "110"); break;
+    case '7': printf("%s", "111"); break;
     }
     
-    return x;
-}
+    a = strlen(p);
 
-int main() {
-    
-    int a, b, count;
-    int ans;
-    int arr[MAX] = {0};
-    
-    scanf("%d", &count);
-    
-    for(int i = 0; i < count; i++){
-        scanf("%d %d",&a, &b);
-        arr[i] = expon(a, b);
+    for (int i = 1; i < a; i++) {
+        switch (p[i]) {
+        case '0': printf("%s", "000"); break;
+        case '1': printf("%s", "001"); break;
+        case '2': printf("%s", "010"); break;
+        case '3': printf("%s", "011"); break;
+        case '4': printf("%s", "100"); break;
+        case '5': printf("%s", "101"); break;
+        case '6': printf("%s", "110"); break;
+        case '7': printf("%s", "111"); break;
+        }
     }
     
-    for(int i = 0; i < count; i++){
-        
-        ans = arr[i];
-        if(ans == 0)
-            printf("10\n");
-        else
-            printf("%d\n", ans);
-    }
 }
