@@ -1,26 +1,57 @@
-#include <stdio.h>
+/* 1672 DNA 해독 : 못풀었음 */
 
+#include <stdio.h>
+#define MAX 1000000
 int main(){
-    int change1, change2;
-    int count, ans;
+    
+    int count;
+    char dna;
+    char DNA[MAX];
     
     scanf("%d",&count);
     
-    ans = 1;
-    
     for(int i = 0; i < count; i++){
-        scanf("%d %d", &change1,&change2);
-        if(change1 == ans || change2 == ans){
-            if(change1 == ans){
-                ans = change2;
-            }
-            else if(change2 == ans){
-                ans = change1;
-            }
-        }
+        scanf("%c",&dna);
+        DNA[i] = dna;
     }
-
-    printf("%d",ans);
+    
+    for(int i = count - 2; i < 0; i--){
+        if(DNA[i] == 'AA')
+            DNA[i] = 'A';
+        if(DNA[i] == 'AG')
+            DNA[i] = 'A';
+        if(DNA[i] == 'AC')
+            DNA[i] = 'A';
+        if(DNA[i] == 'AT')
+            DNA[i] = 'A';
+        
+        if(DNA[i] == 'GA')
+            DNA[i] = 'A';
+        if(DNA[i] == 'GG')
+            DNA[i] = 'A';
+        if(DNA[i] == 'GC')
+            DNA[i] = 'A';
+        if(DNA[i] == 'GT')
+            DNA[i] = 'A';
+        
+        if(DNA[i] == 'CA')
+            DNA[i] = 'A';
+        if(DNA[i] == 'CG')
+            DNA[i] = 'A';
+        if(DNA[i] == 'CC')
+            DNA[i] = 'A';
+        if(DNA[i] == 'CT')
+            DNA[i] = 'A';
+        
+        if(DNA[i] == 'TA')
+            DNA[i] = 'A';
+        if(DNA[i] == 'TG')
+            DNA[i] = 'A';
+        if(DNA[i] == 'TC')
+            DNA[i] = 'A';
+        if(DNA[i] == 'TT')
+            DNA[i] = 'A';
+    }
+    
+    printf("%c\n",&DNA);
 }
-
-//코드 직관성이 훌륭하네요. 도움 받고 갑니다.
