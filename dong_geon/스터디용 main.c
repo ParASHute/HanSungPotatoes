@@ -1,16 +1,13 @@
-#include <stdio.h>
+#include <stdio.h>  //10869 c
 
-int main(void)  //2438 정답
+int main(void)
 {
-	int t,i,x;
-	scanf("%d", &t);
-	for (i = 1; i <= t; i++)
-	{
-		for (x=0; x<i; x++) 
-		{
-			printf("*");
-		}
-		printf("\n");
-	}
+	int a, b;
+	scanf("%d %d", &a, &b);
+	printf("%d\n", a + b);
+	printf("%d\n", a - b);
+	printf("%d\n", a * b);
+	printf("%d\n", a / b);
+	printf("%d\n", a % b);
 	return 0;
 }
