@@ -26,3 +26,5 @@ int main(void)
 	}
 	printf("%d", ball);
 }
+
+// 포인터를 굳이 써야 했을문제일까...
