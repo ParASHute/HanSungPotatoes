@@ -1,38 +1,24 @@
-/* baekjoon 1006 정답 */
-
 #include <stdio.h>
-#define MAX 1000000
 
-int expon(int a, int b){
+int main(){
+    int change1, change2;
+    int count, ans;
     
-    int x = 1;
-    for(int i = 0; i < b; i++){
-        x *= a;
-        x = x % 10;
-    }
+    scanf("%d",&count);
     
-    return x;
-}
-
-int main() {
-    
-    int a, b, count;
-    int ans;
-    int arr[MAX] = {0};
-    
-    scanf("%d", &count);
+    ans = 1;
     
     for(int i = 0; i < count; i++){
-        scanf("%d %d",&a, &b);
-        arr[i] = expon(a, b);
+        scanf("%d %d", &change1,&change2);
+        if(change1 == ans || change2 == ans){
+            if(change1 == ans){
+                ans = change2;
+            }
+            else if(change2 == ans){
+                ans = change1;
+            }
+        }
     }
-    
-    for(int i = 0; i < count; i++){
-        
-        ans = arr[i];
-        if(ans == 0)
-            printf("10\n");
-        else
-            printf("%d\n", ans);
-    }
+
+    printf("%d",ans);
 }
