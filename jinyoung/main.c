@@ -1,13 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
+#include <stdio.h>
 
 int main() {
-	int A, B;
-	scanf("%d %d", &A, &B);
+	long long a, b, c, sum = 0;
 
-	printf("%d\n", A+B);
-	printf("%d\n", A-B);
-	printf("%d\n", A*B);
-	printf("%d\n", A/B);
-	printf("%d\n", A%B);
+	scanf("%lld %lld", &a, &b);
+
+	if (a < b) {
+		c = b;
+		b = a;
+		a = c;
+	}
+
+	sum = a * (a + 1) / 2 - b * (b - 1) / 2;
+	printf("%lld", sum);
 }
