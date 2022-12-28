@@ -1,37 +1,24 @@
 #include <stdio.h>
 
-int change(int x, int y) //포인터 안쓰고 하기!
-{
-	int temp;
-	temp = x;
-	x = y;
-	y = temp;
-	return x;  //공의 위치 리턴
-}
-int change2(int y, int x)  
-{
-	int temp;
-	temp = x;
-	x = y;
-	y = temp;
-	return x;
-}
-
 int main(void)
 {
-	int m, x, y, ball = 1;  //공 초기위치 1
-	scanf("%d", &m);
-	while (m--) {
-		scanf("%d %d", &x, &y);
+	int e, f, c, a = 0, b=0, can = 0;
+	scanf("%d %d %d", &e, &f, &c);
+	a = (e + f) / c;  
+	can += a;
+	b += a;  //새로운 빈 병 b
+	b += (e + f) % c; //빈 병 나머지 있을 수 있음 ex(5,5,3)
 
-		if (x==ball) { 
-			ball = change(x,y); 
-			continue;
+	while (1)
+	{
+		if (b / c >= 1) {
+			b -= c;
+			b++;
+			can++;
 		}
-		if (y == ball) {
-			ball = change2(x, y);
-		}
+		else
+			break;
 	}
-	printf("%d", ball);
+	printf("%d", can);
 }
 
