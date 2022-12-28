@@ -1,38 +1,28 @@
-/* 백준 1212 8진수 2진수*/
-
+/* 백준 5023 탄산 음료 */
 #include <stdio.h>
-#include <string.h>
 
-int main(void) {
-    char p[333335];
-    unsigned long a;
+int main(){
+    int e,f,c;
+    int p,q,sum, k;
+    int ans = 0;
     
-    scanf("%s", p);
-    
-    switch (p[0]) {
-    case '0': printf("%s", "0"); break;
-    case '1': printf("%s", "1"); break;
-    case '2': printf("%s", "10"); break;
-    case '3': printf("%s", "11"); break;
-    case '4': printf("%s", "100"); break;
-    case '5': printf("%s", "101"); break;
-    case '6': printf("%s", "110"); break;
-    case '7': printf("%s", "111"); break;
-    }
-    
-    a = strlen(p);
-
-    for (int i = 1; i < a; i++) {
-        switch (p[i]) {
-        case '0': printf("%s", "000"); break;
-        case '1': printf("%s", "001"); break;
-        case '2': printf("%s", "010"); break;
-        case '3': printf("%s", "011"); break;
-        case '4': printf("%s", "100"); break;
-        case '5': printf("%s", "101"); break;
-        case '6': printf("%s", "110"); break;
-        case '7': printf("%s", "111"); break;
+    scanf("%d %d %d",&e,&f,&c);
+    sum = e+f;
+    while(sum > c){
+        
+        sum = e + f;
+        p = sum / c;
+        q = sum % c;
+        k = p + q;
+        ans += p;
+        
+        f = q;
+        e = p;
+        
+        if(e+q < c){
+            break;
         }
     }
     
+    printf("%d", ans);
 }
