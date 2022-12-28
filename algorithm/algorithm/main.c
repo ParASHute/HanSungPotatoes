@@ -1,28 +1,55 @@
-/* 백준 5023 탄산 음료 */
+/* 김민성 백준 1668 트로피 전열 */
 #include <stdio.h>
 
 int main(){
-    int e,f,c;
-    int p,q,sum, k;
-    int ans = 0;
     
-    scanf("%d %d %d",&e,&f,&c);
-    sum = e+f;
-    while(sum > c){
-        
-        sum = e + f;
-        p = sum / c;
-        q = sum % c;
-        k = p + q;
-        ans += p;
-        
-        f = q;
-        e = p;
-        
-        if(e+q < c){
-            break;
-        }
+    int arr[50] = { 0 };
+    int l = 1,r = 1;
+    int num,temp = 0,h;
+    int p,q,k;
+    
+    scanf("%d", &num);
+    k = num;
+    
+    for(int i = 0; i < num; i++){
+        scanf("%d", &h);
+        arr[i] = h;
     }
     
-    printf("%d", ans);
+    for(int i = 0; i < num; i++){
+        p = arr[i];
+        q = arr[i + 1];
+        if(q > p){
+            if(q > temp){
+                l++;
+                temp = q;
+            }
+        }
+        else{
+            if(p > temp)
+                temp = p;
+        }
+    }
+    temp = 0;
+    p = 0;
+    q = 0;
+    for(int i = 0; i < num; i++){
+        p = arr[k - 1];
+        q = arr[k - 2];
+            if(q > p){
+                if(q > temp){
+                    r++;
+                    temp = q;
+                }
+            }
+            else{
+                if(p > temp)
+                    temp = p;
+            }
+        k--;
+        if(k-2 < 0)
+            break;
+    }
+    
+    printf("%d\n%d",l,r);
 }
