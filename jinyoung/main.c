@@ -1,5 +1,8 @@
-#include<stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 
-int main(){
-    printf("화이팅");
+int main() {
+	int x;
+	scanf("%x", &x);
+	printf("%d", x);
 }
