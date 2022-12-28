@@ -1,4 +1,2 @@
 ﻿  main.c
-C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\ju_ho\main.c(9,22): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\ju_ho\main.c(13,23): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   ju_ho.vcxproj -> C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\Debug\ju_ho.exe

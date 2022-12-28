@@ -2,18 +2,17 @@
 #include <stdio.h>
 
 int main() {
-	int X, Y, N = 0;
-	float div,val = 0;
-	scanf("%d %d", &X, &Y);
-	scanf("%d", &N);
-	val = X * 1000.0 / Y;
-	for (int i = 0; i < N; i++)
+	int M, X, Y;
+	int cup = 1;
+	scanf("%d", &M);
+	for (int i = 0; i < M; i++)
 	{
 		scanf("%d %d", &X, &Y);
-		div = X * 1000.0 / Y;
-		if (val >= div)
-			val = div;
+		if (X == cup)
+			cup = Y;
+		else if (Y == cup)
+			cup = X;
 	}
-	printf("%0.2f", val);
+	printf("%d", cup);
 	return 0;
 }
