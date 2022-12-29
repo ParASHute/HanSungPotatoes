@@ -1,58 +1,32 @@
-/* 김민성 백준 1668 트로피 전열 정답 */
+/* 김민성 백준 1100 하얀 칸 정답 */
 #include <stdio.h>
-int arr[50];
-int ll(int l, int num){
-    int p,q,temp = 0;
-    for(int i = 0; i < num; i++){
-        p = arr[i];
-        q = arr[i + 1];
-        if(q > p){
-            if(q > temp){
-                l++;
-                temp = q;
-            }
-        }
-        else{
-            if(p > temp)
-                temp = p;
-        }
+
+void chess(int chess[9]){
+    char Piece;
+    for(int i = 0; i < 9; i++){
+            scanf("%c",&Piece);
+            chess[i] = Piece;
     }
-    return l;
 }
 
-int lr(int r, int num){
-    int temp = 0, k = num;
-    int p,q;
-    for(int i = 0; i < num; i++){
-        p = arr[k - 1];
-        q = arr[k - 2];
-            if(q > p){
-                if(q > temp){
-                    r++;
-                    temp = q;
-                }
-            }
-            else{
-                if(p > temp)
-                    temp = p;
-            }
-        k--;
-        if(k-2 < 0)
-            break;
-    }
-    return r;
-}
 int main(){
+    int ches[9];
+    int count = 0;
     
-    int l = 1,r = 1;
-    int num,h;
-    
-    scanf("%d", &num);
-    
-    for(int i = 0; i < num; i++){
-        scanf("%d", &h);
-        arr[i] = h;
+    for(int i = 0; i < 8; i++){
+        chess(ches);
+        for(int j = 0; j < 8; j++){
+            if(i % 2 == 0){
+                if(j % 2 == 0 && ches[j] == 'F')
+                    count++;
+            }
+            
+            else{
+                if(j % 2 == 1 && ches[j] == 'F')
+                    count++;
+            }
+        }
     }
     
-    printf("%d\n%d",ll(l, num),lr(r,num));
+    printf("%d\n",count);
 }
