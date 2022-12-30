@@ -6,11 +6,7 @@ int main() {
 	scanf("%d", &N);
 	for (int i = 0; i < N; i++)
 	{
-		for (int j = N-1; j > i ; j--)
-		{
-			printf(" ");
-		}
-		for (int k = 0; k <= i; k++)
+		for (int j = N; j > i ; j--)
 		{
 			printf("*");
 		}
