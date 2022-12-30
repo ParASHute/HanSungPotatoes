@@ -1,20 +1,43 @@
 #include <stdio.h>
-//2721 삼각수의 합 정답.c
+
+int gcd(int x, int y) //유클리드 호제로 최대공약수 빠르게
+{
+	if (y == 0)
+		return x;
+	else
+		return gcd(y, x % y);
+}
+
 int main(void) 
 {
-	int n, a, sum, i, plus;
-	scanf("%d", &n);
-	while (n--) {
-		sum = 0;
-		scanf("%d", &a);
-		for (i = 1; i <= a; i++)
-		{
-			plus = 0;
-			for (int j = 1; j <= i + 1; j++)
-				plus += j;
-			sum += plus * i;
+	int a, b, c, d, i, g;   //  a/b + c/d
+	int x, y;  // 기약분수 y/x
+	int abgcd, cdgcd;
+	scanf("%d %d", &a, &b);
+	scanf("%d %d", &c, &d);
+	abgcd = gcd(a, b);
+	cdgcd = gcd(c, d);
+	if (abgcd != 1) {  //약분
+		a /= abgcd;
+		b /= abgcd;
+	}
+	if (cdgcd != 1) {  //약분
+		c /= cdgcd;
+		d /= cdgcd;
+	}
+	
+	x = b * d;   //분모
+	y = a * d + b * c;   //분자
 
+	while (1) {
+		g = gcd(x, y);
+
+		if (gcd(x, y) == 1) {  //최대공약수가 1이면 기약분수인 특징를
+			printf("%d %d", y, x);
+			return 0;
 		}
-		printf("%d\n", sum);
+
+		x /= g;
+		y /= g;
 	}
 }
