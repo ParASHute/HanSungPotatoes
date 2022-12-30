@@ -1,25 +1,26 @@
-/* 김민성 백준 2748 dp */
+/* 김민성 백준 1934 정답 */
 #include <stdio.h>
+#define MAX 1000
 
-long long dp[90];
-long long Fibonacci(long long n){
-    
-    if (n == 1 || n == 2)
-        return 1;
-    
-    if(dp[n] != 0)
-      return dp[n];
-    
-    else
-        dp[n] = Fibonacci(n-1) + Fibonacci(n-2);
-    
-    return dp[n];
+int func(int A, int B){
+    if (B == 0)
+        return A;
+    return func(B, A % B);
 }
 
 int main(){
     
-    long long count;
+    int count,a,b;
+    int L[MAX];
     
-    scanf("%lld",&count);
-    printf("%lld", Fibonacci(count));
+    scanf("%d",&count);
+    
+    for(int i = 0; i < count; i++){
+        scanf("%d %d",&a,&b);
+        L[i] =  func(a, b) * (a/func(a, b)) * (b/func(a, b));
+    }
+    
+    for(int i = 0; i <count; i++){
+        printf("%d\n", L[i]);
+    }
 }
