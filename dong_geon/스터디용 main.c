@@ -1,15 +1,35 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main(void)
 {
-	int n, i;
-	long long arr[91];
-	scanf("%d", &n);
-	arr[0] = 0;
-	arr[1] = 1;
-	for (i = 0; i <= n; i++)
+	char s[55];
+	int i, j, len, sum = 0;
+	scanf("%s", s);
+	len = strlen(s);
+	for (i = 0; i < len; i++)
 	{
-		arr[i + 2] = arr[i] + arr[i + 1];
+		if (s[i] == '-')
+		{
+			j = i;
+			while (1)
+			{
+				if (j + 2 >= len)
+					break;
+
+				if (s[j + 1] == '+')
+					s[j + 1] = '-';
+
+				if (s[j + 2] == '-')
+					break;
+
+				j++;
+			}
+		}
 	}
-	printf("%lld", arr[n]);
+	for (i = 0; i < len; i++)  //55-50-40
+	{
+		printf("%c", s[i]);
+	}
 }
