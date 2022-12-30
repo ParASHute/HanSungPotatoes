@@ -2,13 +2,17 @@
 #include <stdio.h>
 
 int main() {
-	int a, b, c, sum1, sum2 = 0, n = 0;
-	scanf("%d %d %d", &a, &b, &c);
+	int a, b, n, sum;
+	scanf("%d", &n);
 
-	sum1 = a;
-	if (b >= c) printf("-1\n");
-	else {
-		n = a / (c - b) + 1;
-		printf("%d", n);
+	for (int j = 0; j < n; j++) {
+		sum = 1;
+		scanf("%d %d", &a, &b);
+		for (int i = 0; i < b; i++) {
+			sum *= a;
+			sum %= 10;
+		}
+		if (sum == 0) printf("10\n");
+		else printf("%d\n", sum);
 	}
 }
