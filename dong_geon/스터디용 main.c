@@ -33,3 +33,6 @@ int main(void)
 		printf("%c", s[i]);
 	}
 }
+
+//str2int ->str[0]*10 + str[1]*10^1 + ... srt[n-1]*10^n
+//	-> 짜르는 부분으로 n을 초기화 -> inte[] -> 배열에 입력
