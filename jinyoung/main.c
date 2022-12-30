@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 int main() {
-	int a, b, c, d;
-	scanf("%d %d %d", &a, &b, &c);
-	if (a > b) { d = a; a = b; b = d; }
-	if (b > c) { d = b; b = c; c = d; }
-	if (a > b) { d = a; a = b; b = d; }
-	if (a > c) { d = a; a = c; c = d; }
-	printf("%d %d %d", a, b, c);
+	int L, p, sum, a, b, c, d, e;
+	scanf("%d %d", &L, &p);
+	sum = L * p;
+
+	scanf("%d %d %d %d %d", &a, &b, &c, &d, &e);
+
+	printf("%d %d %d %d %d\n", a - sum, b - sum, c - sum, d - sum, e - sum);
 }
