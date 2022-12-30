@@ -2,23 +2,19 @@
 #include <stdio.h>
 
 int main() {
-	int count = 0;
-	int e, f, c,p,q, div = 0, sum = 0;
-	scanf("%d %d %d", &e, &f, &c);
-	sum = e + f;
-	div = e + f;
-	for (int i = 0; i < sum; i++)
+	int N = 0;
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
 	{
-		p = div / c;
-		q = div % c;
-		count += p;
-		if (p + q < c)
-			break;
-		else 
+		for (int j = N-1; j > i ; j--)
 		{
-			div = p + q;
+			printf(" ");
 		}
+		for (int k = 0; k <= i; k++)
+		{
+			printf("*");
+		}
+		printf("\n");
 	}
-	printf("%d", count);
 	return 0;
 }
