@@ -2,11 +2,13 @@
 #include <stdio.h>
 
 int main() {
-	int a, b, c;
-	scanf("%d %d %d", &a, &b, &c);
-
-	printf("%d\n", (a + b) % c);
-	printf("%d\n", ((a % c) + (b % c)) % c);
-	printf("%d\n", (a * b) % c);
-	printf("%d\n", ((a % c) * (b % c)) % c);
+	int a, b, c, sum;
+	scanf("%d", &a);
+	scanf("%d", &b);
+	scanf("%d", &c);
+	sum = a + b + c;
+	if (sum != 180) printf("Error");
+	else if (a == b && b == c && a == c)printf("Equilateral");
+	else if (a != b && b != c && c != a)printf("Scalene");
+	else printf("Isosceles");
 }
