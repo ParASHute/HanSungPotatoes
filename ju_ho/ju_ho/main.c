@@ -1,20 +1,26 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#define MAX 1000
 
+int max(int A, int B) {
+	if (B == 0)
+		return A;
+	return max(B, A % B);
+}
 int main() {
-	int a, b, c;
-	scanf("%d %d %d", &a, &b, &c);
-	if (a < b && b < c)
-		printf("%d %d %d", a, b, c);
-	else if (b < a && a < c)
-		printf("%d %d %d", b, a, c);
-	else if (a < c && c < b)
-		printf("%d %d %d", a, c, b);
-	else if (b<c&&c<a)
-		printf("%d %d %d", b, c, a);
-	else if (c < a && a < b)
-		printf("%d %d %d", c, a, b);
-	else if (c < b && b < a)
-		printf("%d %d %d", c, b, a);
+	int T, A, B, val, ans;
+	int c[MAX] = { 0 };
+	scanf("%d", &T);
+	for (int i = 0; i < T; i++)
+	{
+		scanf("%d %d", &A, &B);
+		val = A * B;
+		c[i] = val / max(A, B);
+	}
+	for (int j = 0; j < T; j++)
+	{
+		ans = c[j];
+		printf("%d\n", c[j]);
+	}
 	return 0;
 }
