@@ -2,13 +2,11 @@
 #include <stdio.h>
 
 int main() {
-	int a, b, c, d, sum1, sum2;
+	int a, b, c;
+	scanf("%d %d %d", &a, &b, &c);
 
-	scanf("%d %d %d %d", &a, &b, &c, &d);
-	sum1 = a + b + c + d;
-	scanf("%d %d %d %d", &a, &b, &c, &d);
-	sum2 = a + b + c + d;
-
-	if (sum1 < sum2) sum1 = sum2;
-	printf("%d", sum1);
+	printf("%d\n", (a + b) % c);
+	printf("%d\n", ((a % c) + (b % c)) % c);
+	printf("%d\n", (a * b) % c);
+	printf("%d\n", ((a % c) * (b % c)) % c);
 }
