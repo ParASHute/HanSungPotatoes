@@ -2,19 +2,13 @@
 #include <stdio.h>
 
 int main() {
-	int sb, gb, hb, a, b, minb, min;
-
-	scanf("%d", &sb);
-	scanf("%d", &gb);
-	scanf("%d", &hb);
+	int a, b, c, sum;
 	scanf("%d", &a);
 	scanf("%d", &b);
-	minb = sb;
-	if (minb > gb) minb = gb;
-	if (minb > hb) minb = hb;
-
-	min = a;
-	if (min > b) min = b;
-
-	printf("%d", minb + min - 50);
+	scanf("%d", &c);
+	sum = a + b + c;
+	if (sum != 180) printf("Error");
+	else if (a == b && b == c && a == c)printf("Equilateral");
+	else if (a != b && b != c && c != a)printf("Scalene");
+	else printf("Isosceles");
 }
