@@ -2,19 +2,13 @@
 #include <stdio.h>
 
 int main() {
-	int sb, gb, hb, a, b, minb, min;
+	int a, b, c, d, sum1, sum2;
 
-	scanf("%d", &sb);
-	scanf("%d", &gb);
-	scanf("%d", &hb);
-	scanf("%d", &a);
-	scanf("%d", &b);
-	minb = sb;
-	if (minb > gb) minb = gb;
-	if (minb > hb) minb = hb;
+	scanf("%d %d %d %d", &a, &b, &c, &d);
+	sum1 = a + b + c + d;
+	scanf("%d %d %d %d", &a, &b, &c, &d);
+	sum2 = a + b + c + d;
 
-	min = a;
-	if (min > b) min = b;
-
-	printf("%d", minb + min - 50);
+	if (sum1 < sum2) sum1 = sum2;
+	printf("%d", sum1);
 }
