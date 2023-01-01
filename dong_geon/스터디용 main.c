@@ -1,44 +1,33 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void) 
+int static compare(const void* first, const void* second)
 {
-	int t, n, i, sum, sum2, count,check, num[500];
-	scanf("%d", &t);
-	while (t--) {
-		scanf("%d", &n);
-		sum = 0;
-		count = 0;
-		check = 0;
-		for (i = 2; i < n; i++)
-		{
-			if (n % i == 0) {
-				sum += i;
-				num[count] = i;
-				count++;
-			}
-		}
-		if (sum > n)
-		{
-			for (i = 0; i < count; i++)
-			{
-				sum2 = 0;
-				for (int j = 2; j < num[i]; j++)
-				{
-					if (num[i] % j == 0)
-						sum2 += j;
-				}
-				if (sum2 > num[i]) {
-					printf("BOJ 2022\n");
-					break;
-				}
-				check++;
-			}
-			if (check==count)
-				printf("Good Bye\n");
-		}
+	if (*(int*)first > *(int*)second)
+		return 1;
+	else if (*(int*)first < *(int*)second)
+		return -1;
+	else
+		return 0;
+}
 
+int main(void)
+{
+	int n, m[1001], g[1001], i, x = 0;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++)
+		scanf("%d", &m[i]);
+	for (i = 0; i < n; i++)
+		scanf("%d", &g[i]);
+	qsort(m, n, 4, compare);
+	qsort(g, n, 4, compare);
+	
+	for (i = 0; i < n; i++)
+	{
+		if (m[i] >= g[i])
+			x += (m[i] - g[i]);
 		else
-			printf("BOJ 2022\n");
+			x += (g[i] - m[i]);
 	}
-	return 0;
+	printf("%d", x);
 }
