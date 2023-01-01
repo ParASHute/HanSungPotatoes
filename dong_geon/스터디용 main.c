@@ -1,43 +1,44 @@
 #include <stdio.h>
 
-int gcd(int x, int y) //유클리드 호제로 최대공약수 빠르게
-{
-	if (y == 0)
-		return x;
-	else
-		return gcd(y, x % y);
-}
-
 int main(void) 
 {
-	int a, b, c, d, i, g;   //  a/b + c/d
-	int x, y;  // 기약분수 y/x
-	int abgcd, cdgcd;
-	scanf("%d %d", &a, &b);
-	scanf("%d %d", &c, &d);
-	abgcd = gcd(a, b);
-	cdgcd = gcd(c, d);
-	if (abgcd != 1) {  //약분
-		a /= abgcd;
-		b /= abgcd;
-	}
-	if (cdgcd != 1) {  //약분
-		c /= cdgcd;
-		d /= cdgcd;
-	}
-	
-	x = b * d;   //분모
-	y = a * d + b * c;   //분자
-
-	while (1) {
-		g = gcd(x, y);
-
-		if (gcd(x, y) == 1) {  //최대공약수가 1이면 기약분수인 특징를
-			printf("%d %d", y, x);
-			return 0;
+	int t, n, i, sum, sum2, count,check, num[500];
+	scanf("%d", &t);
+	while (t--) {
+		scanf("%d", &n);
+		sum = 0;
+		count = 0;
+		check = 0;
+		for (i = 2; i < n; i++)
+		{
+			if (n % i == 0) {
+				sum += i;
+				num[count] = i;
+				count++;
+			}
+		}
+		if (sum > n)
+		{
+			for (i = 0; i < count; i++)
+			{
+				sum2 = 0;
+				for (int j = 2; j < num[i]; j++)
+				{
+					if (num[i] % j == 0)
+						sum2 += j;
+				}
+				if (sum2 > num[i]) {
+					printf("BOJ 2022\n");
+					break;
+				}
+				check++;
+			}
+			if (check==count)
+				printf("Good Bye\n");
 		}
 
-		x /= g;
-		y /= g;
+		else
+			printf("BOJ 2022\n");
 	}
+	return 0;
 }
