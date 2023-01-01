@@ -1,29 +1,31 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#define MAX 100000
 
 int main() {
-    int a, b, c, d, e;
-    int min1, min2, sum = 0;
-    scanf("%d", &a);
-    scanf("%d", &b);
-    scanf("%d", &c);
-    scanf("%d", &d);
-    scanf("%d", &e);
-    if (a < b && a < c) {
-        min1 = a;
-    }
-    else if (b < c && b < a) {
-        min1 = b;
-    }
-    else if (c < a && c < b) {
-        min1 = c;
-    }
-    if (d < e)
+    int T, a, b, val, c;
+    int ca[MAX] = { 0 };
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++)
     {
-        min2 = d;
+        val = 1;
+        scanf("%d %d", &a, &b);
+        for (int j = 0; j < b; j++)
+        {
+            val = val * a;
+            val = val % 10;
+        }
+        ca[i] = val;
     }
-    else
-        min2 = e;
-    printf("%d", min1 + min2 - 50);
+    for (int i = 0; i < T; i++)
+    {
+        int ans = ca[i];
+        if (ans == 0)
+        {
+            printf("10\n");
+        }
+        else
+            printf("%d\n", ans);
+    }
     return 0;
 }
