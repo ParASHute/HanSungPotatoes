@@ -1,33 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int static compare(const void* first, const void* second)
-{
-	if (*(int*)first > *(int*)second)
-		return 1;
-	else if (*(int*)first < *(int*)second)
-		return -1;
-	else
-		return 0;
-}
 
 int main(void)
 {
-	int n, m[1001], g[1001], i, x = 0;
+	int n, i, count = 0, x = 1;
 	scanf("%d", &n);
-	for (i = 0; i < n; i++)
-		scanf("%d", &m[i]);
-	for (i = 0; i < n; i++)
-		scanf("%d", &g[i]);
-	qsort(m, n, 4, compare);
-	qsort(g, n, 4, compare);
-	
-	for (i = 0; i < n; i++)
+	if (n < 5)
 	{
-		if (m[i] >= g[i])
-			x += (m[i] - g[i]);
-		else
-			x += (g[i] - m[i]);
+		printf("0");
+		return 0;
 	}
-	printf("%d", x);
+	else {
+		for (i = 5; i <= n; i++)
+		{
+			if (i % 5 == 0)
+				count++;
+			if (i % 25 == 0)
+				count++;
+			if (i % 125 == 0)
+				count++;
+		}
+	}
+	printf("%d", count);
 }
