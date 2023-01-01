@@ -2,53 +2,28 @@
 #include <stdio.h>
 
 int main() {
-    int L, P;
     int a, b, c, d, e;
-    int val;
-    int A, B, C, D, E;
-    scanf("%d %d", &L, &P);
-    scanf("%d %d %d %d %d", &a, &b, &c, &d, &e);
-    val = L * P;
-    if (a == val)
-    {
-        A = 0;
+    int min1, min2, sum = 0;
+    scanf("%d", &a);
+    scanf("%d", &b);
+    scanf("%d", &c);
+    scanf("%d", &d);
+    scanf("%d", &e);
+    if (a < b && a < c) {
+        min1 = a;
     }
-    else if (a != val)
-    {
-        A = a - val;
+    else if (b < c && b < a) {
+        min1 = b;
     }
-    if (b == val)
-    {
-        B = 0;
+    else if (c < a && c < b) {
+        min1 = c;
     }
-    else if (b != val)
+    if (d < e)
     {
-        B = b - val;
+        min2 = d;
     }
-    if (c == val)
-    {
-        C = 0;
-    }
-    else if (c != val)
-    {
-        C = c - val;
-    }
-    if (d == val)
-    {
-        D = 0;
-    }
-    else if (d != val)
-    {
-        D = d - val;
-    }
-    if (e == val)
-    {
-        E = 0;
-    }
-    else if (e != val)
-    {
-        E = e - val;
-    }
-    printf("%d %d %d %d %d", A, B, C, D, E);
+    else
+        min2 = e;
+    printf("%d", min1 + min2 - 50);
     return 0;
 }
