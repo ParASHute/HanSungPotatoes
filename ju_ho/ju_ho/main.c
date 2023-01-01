@@ -3,31 +3,15 @@
 #include <stdio.h>
 
 int main() {
+	int A, B, C;
 
-	int a, b, c;
+	scanf("%d %d %d", &A, &B, &C);
 
-	scanf("%d", &a);
+	printf("%d\n", (A + B) % C);
 
-	scanf("%d", &b);
+	printf("%d\n", ((A % C) + (B % C)) % C); printf("%d\n", (A * B) % C);
 
-	scanf("%d", &c);
-
-	if (a == 60 && b == 60 && c == 60) { printf("Equilateral"); }
-
-	else if (a + b + c == 180 && a == b || a == c || b == c) {
-
-		printf("Isosceles");
-	}
-
-	else if (a + b + c == 180 && a != b && a != c && b != c) {
-
-		printf("Scalene");
-
-	}
-	else if (a + b + c != 180) {
-
-		printf("Error");
-	}
+	printf("%d\n", ((A % C) * (B % C)) % C);
 
 	return 0;
 }
