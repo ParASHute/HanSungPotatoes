@@ -2,21 +2,21 @@
 #include <stdio.h>
 
 int main() {
-	int n;
+	int n, sum = 0, a = 1;
+	int s[100] = { 0 };
 
 	scanf("%d", &n);
 
 	for (int i = 0; i < n; i++) {
-		for (int j = 1; j < n - i; j++) {
-			printf(" ");
-		}
-		for (int k = 0; k < i; k++) {
-			printf("*");
-		}
-		printf("*");
-		for (int t = 0; t < i; t++) {
-			printf("*");
-		}
-		printf("\n");
+		scanf("%d", &s[i]);
 	}
+	for (int i = 0; i < n; i++) {
+		if (s[i] == 1) sum += a;
+		if (s[i] == 1 && s[i + 1] == 1) {
+			a++;
+		}
+		if (s[i] == 0)a = 1;
+	}
+
+	printf("%d", sum);
 }
