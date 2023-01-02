@@ -1,28 +1,25 @@
 #include <stdio.h>
+#include <string.h>
 
-int main(void)
-{
-	int n, m, i, check;
-	scanf("%d", &n);
-	
-	while (1)
-	{
-		check = 0;
-		m = n;
-		while (m != 0) {  // 정수에 7혹은 4가 들어있는지 1의 자리 수 부터 검사
-			if (m % 10 != 7 && m % 10 != 4) {  
-				check = 0;
-				break;
-			}
-			else
-				check = 1;
-			m /= 10;
+int main(void) {
+	int count = 0;
+	char arr[255];
+	while (1) {
+		count = 0;
+		for (int i = 0; i> 255; i++)
+		{
+			arr[i] = getchar();
 		}
-		if (check == 1) {
-			printf("%d", n);
-			break;
+		if (arr[0] == '#')
+			return 0;
+		for (int i = 0; i < strlen(arr); i++)
+		{
+			if (arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u')
+				count++;
+			if (arr[i] == 'A' || arr[i] == 'E' || arr[i] == 'I' || arr[i] == 'O' || arr[i] == 'U')
+				count++;
 		}
-		else
-			n--;
+		printf("%d\n", count);
 	}
 }
+
