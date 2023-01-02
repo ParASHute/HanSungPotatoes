@@ -2,25 +2,28 @@
 #include <stdio.h>
 
 int main() {
-	int a,b,c,d;
-	for (int i = 0; i < 3; i++)
+	int N,a,b=1,sum = 0;
+	int val[100] = { 0 };
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
 	{
-		scanf("%d %d %d %d", &a, &b, &c, &d);
-		if (a + b + c + d == 4) {
-			printf("E\n");
+		scanf("%d", &a);
+		val[i] = a;
+	}
+	for (int i = 0; i < N; i++)
+	{
+		if (val[i] == 1)
+		{
+			sum += b;
 		}
-		else if (a + b + c + d == 1) {
-			printf("C\n");
+		else if (val[i] == 0)
+		{
+			b=1;
 		}
-		else if (a + b + c + d == 2) {
-			printf("B\n");
-		}
-		else if (a + b + c + d == 3) {
-			printf("A\n");
-		}
-		else {
-			printf("D\n");
+		if (val[i] == 1 && val[i + 1] == 1) {
+			b++;
 		}
 	}
+	printf("%d", sum);
 	return 0;
 }
