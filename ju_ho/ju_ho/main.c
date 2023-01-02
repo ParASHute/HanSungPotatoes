@@ -2,37 +2,25 @@
 #include <stdio.h>
 
 int main() {
-	int N = 0;
-	int a, b, c = 0;
-	int val[1000] = { 0 };
-	int max = 0;
-	scanf("%d", &N);
-	for (int i = 0; i < N; i++)
+	int a,b,c,d;
+	for (int i = 0; i < 3; i++)
 	{
-		scanf("%d %d %d", &a, &b, &c);
-		if (a == b && b == c && a == c) {
-			val[i] = 10000 + a * 1000;
+		scanf("%d %d %d %d", &a, &b, &c, &d);
+		if (a + b + c + d == 4) {
+			printf("E\n");
 		}
-		else if (a == b || a == c) {
-			val[i] =  1000 + a * 100;
+		else if (a + b + c + d == 1) {
+			printf("C\n");
 		}
-		else if (b == c) {
-			val[i] = 1000 + b * 100;
+		else if (a + b + c + d == 2) {
+			printf("B\n");
 		}
-		else if (a > b && a > c) {
-			val[i] = a * 100;
+		else if (a + b + c + d == 3) {
+			printf("A\n");
 		}
-		else if (b > a && b > c) {
-			val[i] = b * 100;
-		}
-		else 
-			val[i] = c * 100;
-		
-		if (max < val[i])
-		{
-			max = val[i];
+		else {
+			printf("D\n");
 		}
 	}
-	printf("%d", max);
 	return 0;
 }
