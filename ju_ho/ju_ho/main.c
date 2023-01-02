@@ -2,28 +2,22 @@
 #include <stdio.h>
 
 int main() {
-	int N,a,b=1,sum = 0;
-	int val[100] = { 0 };
-	scanf("%d", &N);
-	for (int i = 0; i < N; i++)
-	{
-		scanf("%d", &a);
-		val[i] = a;
+	int count=0;
+	char str[255] = { 0 };
+	while (1) {
+			count = 0;
+			gets(str);
+			if (str[0] == '#')
+			{
+				return 0;
+			}
+			for (int i = 0; str[i]!=NULL; i++) {
+				if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+				{
+					count++;
+				}
+			}
+			printf("%d\n", count);
 	}
-	for (int i = 0; i < N; i++)
-	{
-		if (val[i] == 1)
-		{
-			sum += b;
-		}
-		else if (val[i] == 0)
-		{
-			b=1;
-		}
-		if (val[i] == 1 && val[i + 1] == 1) {
-			b++;
-		}
-	}
-	printf("%d", sum);
 	return 0;
 }
