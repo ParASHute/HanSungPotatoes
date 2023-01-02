@@ -1,44 +1,28 @@
 #include <stdio.h>
 
-int main(void) 
+int main(void)
 {
-	int t, n, i, sum, sum2, count,check, num[500];
-	scanf("%d", &t);
-	while (t--) {
-		scanf("%d", &n);
-		sum = 0;
-		count = 0;
+	int n, m, i, check;
+	scanf("%d", &n);
+	
+	while (1)
+	{
 		check = 0;
-		for (i = 2; i < n; i++)
-		{
-			if (n % i == 0) {
-				sum += i;
-				num[count] = i;
-				count++;
+		m = n;
+		while (m != 0) {  // 정수에 7혹은 4가 들어있는지 1의 자리 수 부터 검사
+			if (m % 10 != 7 && m % 10 != 4) {  
+				check = 0;
+				break;
 			}
+			else
+				check = 1;
+			m /= 10;
 		}
-		if (sum > n)
-		{
-			for (i = 0; i < count; i++)
-			{
-				sum2 = 0;
-				for (int j = 2; j < num[i]; j++)
-				{
-					if (num[i] % j == 0)
-						sum2 += j;
-				}
-				if (sum2 > num[i]) {
-					printf("BOJ 2022\n");
-					break;
-				}
-				check++;
-			}
-			if (check==count)
-				printf("Good Bye\n");
+		if (check == 1) {
+			printf("%d", n);
+			break;
 		}
-
 		else
-			printf("BOJ 2022\n");
+			n--;
 	}
-	return 0;
 }
