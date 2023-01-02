@@ -2,19 +2,22 @@
 #include <stdio.h>
 
 int main() {
-	int a, b, c;
-	scanf("%d %d %d", &a, &b, &c);
-	if (a < b && b < c)
-		printf("%d %d %d", a, b, c);
-	else if (b < a && a < c)
-		printf("%d %d %d", b, a, c);
-	else if (a < c && c < b)
-		printf("%d %d %d", a, c, b);
-	else if (b<c&&c<a)
-		printf("%d %d %d", b, c, a);
-	else if (c < a && a < b)
-		printf("%d %d %d", c, a, b);
-	else if (c < b && b < a)
-		printf("%d %d %d", c, b, a);
+	int count=0;
+	char str[255] = { 0 };
+	while (1) {
+			count = 0;
+			gets(str);
+			if (str[0] == '#')
+			{
+				return 0;
+			}
+			for (int i = 0; str[i]!=NULL; i++) {
+				if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+				{
+					count++;
+				}
+			}
+			printf("%d\n", count);
+	}
 	return 0;
 }

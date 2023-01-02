@@ -2,19 +2,21 @@
 #include <stdio.h>
 
 int main() {
-	int sb, gb, hb, a, b, minb, min;
+	int n, sum = 0, a = 1;
+	int s[100] = { 0 };
 
-	scanf("%d", &sb);
-	scanf("%d", &gb);
-	scanf("%d", &hb);
-	scanf("%d", &a);
-	scanf("%d", &b);
-	minb = sb;
-	if (minb > gb) minb = gb;
-	if (minb > hb) minb = hb;
+	scanf("%d", &n);
 
-	min = a;
-	if (min > b) min = b;
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &s[i]);
+	}
+	for (int i = 0; i < n; i++) {
+		if (s[i] == 1) sum += a;
+		if (s[i] == 1 && s[i + 1] == 1) {
+			a++;
+		}
+		if (s[i] == 0)a = 1;
+	}
 
-	printf("%d", minb + min - 50);
+	printf("%d", sum);
 }
