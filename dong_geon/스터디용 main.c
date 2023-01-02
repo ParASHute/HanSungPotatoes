@@ -1,25 +1,28 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-int main(void) {
-	int count = 0;
-	char arr[255];
-	while (1) {
-		count = 0;
-		for (int i = 0; i> 255; i++)
-		{
-			arr[i] = getchar();
-		}
-		if (arr[0] == '#')
-			return 0;
-		for (int i = 0; i < strlen(arr); i++)
-		{
-			if (arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u')
-				count++;
-			if (arr[i] == 'A' || arr[i] == 'E' || arr[i] == 'I' || arr[i] == 'O' || arr[i] == 'U')
-				count++;
-		}
-		printf("%d\n", count);
-	}
+int arr[100001];
+int static compare(const void* first, const void* second)
+{
+    if (*(int*)first > *(int*)second)
+        return 1;
+    else if (*(int*)first < *(int*)second)
+        return -1;
+    else
+        return 0;
+}
+
+int main(void)
+{
+    int n, i;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+    qsort(arr, n, 4, compare);
+    printf("%d ", arr[0]);
+    for (i = 1; i < n; i++) {
+        if(arr[i-1]!=arr[i])
+            printf("%d ", arr[i]);
+    }
 }
 
