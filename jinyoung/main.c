@@ -2,22 +2,11 @@
 #include <stdio.h>
 
 int main() {
-	int n, v, count = 0;
-	int a[100] = { 0 };
+	int n;
 
 	scanf("%d", &n);
 
-	for (int i = 0; i < n; i++) {
-		scanf("%d", &a[i]);
+	for (int i = 1; i <= 9; i++) {
+		printf("%d * %d = %d\n", n, i, n * i);
 	}
-
-	scanf("%d", &v);
-
-	for (int i = 0; i < n; i++) {
-		if (a[i] == v) {
-			count++;
-		}
-	}
-
-	printf("%d", count);
 }
