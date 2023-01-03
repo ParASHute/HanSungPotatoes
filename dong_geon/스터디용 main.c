@@ -1,37 +1,19 @@
 #include <stdio.h> 
-
-//배열로 풀다가 실패
-
-void yose(int n, int k)
-{
-    int arr[1001] = { 0 };
-    int count = 0, m;
-    m = k;
-    for (int i = 1; i <= n; i++)
-        arr[i] = i;
-    while (1)
-    {
-        if (arr[m] == m) {
-            printf("%d, ", m);
-            arr[m] = -1;
-            m += k;
-            count++;
-        }
-       
-  
-        if (m > n)
-            m = m - n;
-
-        if (count == n)
-            break;
-    }
-}
-
+//count sort 계수정렬
 int main(void)
 {
-    int N, K;
-    scanf("%d %d", &N, &K);
-    printf("<");
-    yose(N, K);
-    printf(">");
+	int n, x, i, count[10001] = { 0 };
+	scanf("%d", &n);
+	for (i = 0; i < n; i++) {
+		scanf("%d", &x);
+		count[x] = count[x] + 1;
+	}
+
+	for (i = 1; i < n; i++) {
+		for (int j = 1; j <= count[i]; j++) {
+			printf("%d\n",i);
+		}
+	}
+	return 0;
 }
+
