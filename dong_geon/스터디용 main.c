@@ -1,28 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+int arr[5000001];
+int static compare(const void* first, const void* second)
+{
+    if (*(int*)first > *(int*)second)
+        return 1;
+    else if (*(int*)first < *(int*)second)
+        return -1;
+    else
+        return 0;
+}
 
 int main(void)
 {
-	int n, m, i, check;
-	scanf("%d", &n);
-	
-	while (1)
-	{
-		check = 0;
-		m = n;
-		while (m != 0) {  // 정수에 7혹은 4가 들어있는지 1의 자리 수 부터 검사
-			if (m % 10 != 7 && m % 10 != 4) {  
-				check = 0;
-				break;
-			}
-			else
-				check = 1;
-			m /= 10;
-		}
-		if (check == 1) {
-			printf("%d", n);
-			break;
-		}
-		else
-			n--;
-	}
+	int n, k;
+	scanf("%d %d", &n, &k);
+	for (int i = 0; i < n; i++)
+		scanf("%d", &arr[i]);
+	qsort(arr, n, 4, compare);
+    printf("%d", arr[k - 1]);
 }
