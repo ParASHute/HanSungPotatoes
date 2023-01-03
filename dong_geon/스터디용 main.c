@@ -1,23 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h> 
 
-int arr[5000001];
-int static compare(const void* first, const void* second)
+//배열로 풀다가 실패
+
+void yose(int n, int k)
 {
-    if (*(int*)first > *(int*)second)
-        return 1;
-    else if (*(int*)first < *(int*)second)
-        return -1;
-    else
-        return 0;
+    int arr[1001] = { 0 };
+    int count = 0, m;
+    m = k;
+    for (int i = 1; i <= n; i++)
+        arr[i] = i;
+    while (1)
+    {
+        if (arr[m] == m) {
+            printf("%d, ", m);
+            arr[m] = -1;
+            m += k;
+            count++;
+        }
+       
+  
+        if (m > n)
+            m = m - n;
+
+        if (count == n)
+            break;
+    }
 }
 
 int main(void)
 {
-	int n, k;
-	scanf("%d %d", &n, &k);
-	for (int i = 0; i < n; i++)
-		scanf("%d", &arr[i]);
-	qsort(arr, n, 4, compare);
-    printf("%d", arr[k - 1]);
+    int N, K;
+    scanf("%d %d", &N, &K);
+    printf("<");
+    yose(N, K);
+    printf(">");
 }
