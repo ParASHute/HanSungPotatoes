@@ -1,19 +1,24 @@
 #include <stdio.h> 
-//count sort 계수정렬
+
 int main(void)
 {
-	int n, x, i, count[10001] = { 0 };
-	scanf("%d", &n);
-	for (i = 0; i < n; i++) {
-		scanf("%d", &x);
-		count[x] = count[x] + 1;
-	}
-
-	for (i = 1; i < n; i++) {
-		for (int j = 1; j <= count[i]; j++) {
-			printf("%d\n",i);
+	int s[101][101] = { 0 };
+	int a, b, c, d, t, site = 0;
+	t = 4;
+	while (t--) {
+		scanf("%d %d %d %d", &a, &b, &c, &d);
+		for (int i = a; i < c; i++) {
+			for (int j = b; j < d; j++) {
+				s[i][j] = 1;
+			}
 		}
 	}
-	return 0;
+	for (int i = 0; i < 101; i++) {
+		for (int j = 0; j < 101; j++) {
+			if (s[i][j] == 1)
+				site++;
+		}
+	}
+	printf("%d", site);
 }
 
