@@ -3,21 +3,33 @@
 
 int main() {
 	int count=0;
-	char str[255] = { 0 };
-	while (1) {
-			count = 0;
-			gets(str);
-			if (str[0] == '#')
-			{
-				return 0;
-			}
-			for (int i = 0; str[i]!=NULL; i++) {
-				if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U')
+	char str[9] = { 0 };
+	for (int i = 0; i < 8; i++)
+	{
+		gets(str);
+		if (i%2==0)
+		{
+			for (int j = 0; j < 8; j++) {
+				if (str[j] == 'F')
 				{
-					count++;
+					if (j % 2 == 0)
+					{
+						count++;
+					}
 				}
 			}
-			printf("%d\n", count);
+		}
+		else
+			for (int k = 0; k < 8; k++)
+			{
+				if (str[k] == 'F') {
+					if (k%2 ==1)
+					{
+						count++;
+					}
+				}
+			}
 	}
+	printf("%d", count);
 	return 0;
 }
