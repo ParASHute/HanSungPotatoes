@@ -2,23 +2,26 @@
 
 int main(void)
 {
-	int s[101][101] = { 0 };
-	int a, b, c, d, t, site = 0;
-	t = 4;
-	while (t--) {
-		scanf("%d %d %d %d", &a, &b, &c, &d);
-		for (int i = a; i < c; i++) {
-			for (int j = b; j < d; j++) {
-				s[i][j] = 1;
+	int k, i, arr[100001] = { 0 }, zerocnt = 0;
+	long long sum = 0;
+	scanf("%d", &k);
+	for (i = 0; i < k; i++) {
+		scanf("%d", &arr[i]);
+		if (arr[i] == 0)
+		{
+			for (int j = i - 1; j >= 0; j--)
+			{
+				if (arr[j] != 0) {
+					arr[j] = 0;
+					break;
+				}
 			}
 		}
 	}
-	for (int i = 0; i < 101; i++) {
-		for (int j = 0; j < 101; j++) {
-			if (s[i][j] == 1)
-				site++;
-		}
-	}
-	printf("%d", site);
+	
+	for (i = 0; i < k; i++)
+		sum += arr[i];
+
+	printf("%lld", sum);
 }
 
