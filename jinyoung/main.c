@@ -1,22 +1,45 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
+
+char a[1000000];
+
+void reverse(int size, char array[]) {
+	char temp;
+	for (int i = 0; i < size / 2; ++i) {
+		temp = array[i];
+		array[i] = array[size - 1 - i];
+		array[size - 1 - i] = temp;
+	}
+}
 
 int main() {
-	int n, sum = 0, a = 1;
-	int s[100] = { 0 };
+	int sum = 0, f, b;
 
-	scanf("%d", &n);
+	scanf("%s", a);
+	b = strlen(a);
+	reverse(b, a);
 
-	for (int i = 0; i < n; i++) {
-		scanf("%d", &s[i]);
+	while (strlen(a) % 3 > 0) {
+		strcat(a, "0");
 	}
-	for (int i = 0; i < n; i++) {
-		if (s[i] == 1) sum += a;
-		if (s[i] == 1 && s[i + 1] == 1) {
-			a++;
+	b = strlen(a);
+	reverse(b, a);
+
+	for (int i = 0; i < b; i++) {
+		if (a[i] == '1')f = 1;
+		else f = 0;
+
+		if ((i + 1) % 3 == 0) {
+			sum += f;
+			printf("%d", sum);
+			sum = 0;
 		}
-		if (s[i] == 0)a = 1;
+		else if ((i + 1) % 3 == 1) {
+			sum = sum + f * 4;
+		}
+		else if ((i + 1) % 3 == 2) {
+			sum = sum + f * 2;
+		}
 	}
-
-	printf("%d", sum);
 }
