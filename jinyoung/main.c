@@ -2,17 +2,26 @@
 #include <stdio.h>
 
 int main() {
-	int n, a, max, min;
+	int count = 0;
+	char a[10][10];
 
-	scanf("%d", &n);
-
-	scanf("%d", &a);
-	max = a;
-	min = a;
-	for (int i = 0; i < n - 1; i++) {
-		scanf("%d", &a);
-		if (max < a) max = a;
-		if (min > a) min = a;
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 9; j++) {
+			scanf("%c", &a[i][j]);
+		}
 	}
-	printf("%d\n", min * max);
+
+	for (int i = 0; i < 7; i += 2) {
+		for (int j = 0; j < 7; j += 2) {
+			if (a[i][j] == 'F') count++;
+		}
+	}
+
+	for (int i = 1; i < 8; i += 2) {
+		for (int j = 1; j < 8; j += 2) {
+			if (a[i][j] == 'F') count++;
+		}
+	}
+
+	printf("%d", count);
 }
