@@ -1,27 +1,44 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
+
+char a[1000000];
+
+void reverse(int size, char array[]) {
+	char temp;
+	for (int i = 0; i < size / 2; ++i) {
+		temp = array[i];
+		array[i] = array[size - 1 - i];
+		array[size - 1 - i] = temp;
+	}
+}
 
 int main() {
-	int count = 0;
-	char a[10][10];
+	int sum = 0, f;
 
-	for (int i = 0; i < 8; i++) {
-		for (int j = 0; j < 9; j++) {
-			scanf("%c", &a[i][j]);
+	scanf("%s", a);
+
+	reverse(strlen(a), a);
+
+	while (strlen(a) % 3 > 0) {
+		strcat(a, "0");
+	}
+	reverse(strlen(a), a);
+
+	for (int i = 0; i < strlen(a); i++) {
+		if (a[i] == '1')f = 1;
+		else f = 0;
+
+		if ((i + 1) % 3 == 0) {
+			sum += f;
+			printf("%d", sum);
+			sum = 0;
+		}
+		else if ((i + 1) % 3 == 1) {
+			sum = sum + f * 4;
+		}
+		else if ((i + 1) % 3 == 2) {
+			sum = sum + f * 2;
 		}
 	}
-
-	for (int i = 0; i < 7; i += 2) {
-		for (int j = 0; j < 7; j += 2) {
-			if (a[i][j] == 'F') count++;
-		}
-	}
-
-	for (int i = 1; i < 8; i += 2) {
-		for (int j = 1; j < 8; j += 2) {
-			if (a[i][j] == 'F') count++;
-		}
-	}
-
-	printf("%d", count);
 }
