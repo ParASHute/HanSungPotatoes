@@ -1,27 +1,26 @@
 #include <stdio.h> 
+#include <string.h>  //진수를 너무몰라서 구글 참고하고 품,,
 
+//알게된 점: 8진수는 2진수 3개로 표현할 수 있다.
+// ex) 11 001 100 -> 각각 3, 1, 4로 표현 가능하다. ->  (2^1+1) (2^2*0+2^1*0+1) (2^2*1+2^1*0+0)  
+//따라서 len을 3으로 나눠서 len이 3으로 나누어떨어지지 않는다면 그 부분만 처리해준다.
+//나머지는 3자리씩 떨어지는 수이므로 앞에서부터 2^2 , 2^1, 2^0 을 각각의 이진수에 곱해주면 된다.
+
+char arr[1000001] = { 0 };
 int main(void)
 {
-	int k, i, arr[100001] = { 0 }, zerocnt = 0;
-	long long sum = 0;
-	scanf("%d", &k);
-	for (i = 0; i < k; i++) {
-		scanf("%d", &arr[i]);
-		if (arr[i] == 0)
-		{
-			for (int j = i - 1; j >= 0; j--)
-			{
-				if (arr[j] != 0) {
-					arr[j] = 0;
-					break;
-				}
-			}
-		}
-	}
-	
-	for (i = 0; i < k; i++)
-		sum += arr[i];
+	int len, i;
+	scanf("%s", arr);
+	len = strlen(arr);
+	if (len % 3 == 1)
+		printf("%d", arr[0] - '0');
+	if (len % 3 == 2)
+		printf("%d", 2 * (arr[0] - '0') + arr[1] - '0');
 
-	printf("%lld", sum);
+	for (i = len % 3; i < len; i += 3)
+	{
+		printf("%d", 4 * (arr[i] - '0') + 2 * (arr[i + 1] - '0') + arr[i + 2] - '0');  
+	}
 }
+
 
