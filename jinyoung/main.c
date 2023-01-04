@@ -14,18 +14,19 @@ void reverse(int size, char array[]) {
 }
 
 int main() {
-	int sum = 0, f;
+	int sum = 0, f, b;
 
 	scanf("%s", a);
-
-	reverse(strlen(a), a);
+	b = strlen(a);
+	reverse(b, a);
 
 	while (strlen(a) % 3 > 0) {
 		strcat(a, "0");
 	}
-	reverse(strlen(a), a);
+	b = strlen(a);
+	reverse(b, a);
 
-	for (int i = 0; i < strlen(a); i++) {
+	for (int i = 0; i < b; i++) {
 		if (a[i] == '1')f = 1;
 		else f = 0;
 
