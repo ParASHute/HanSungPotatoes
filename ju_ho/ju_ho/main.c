@@ -1,35 +1,57 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
+#define max 1000000
+
+char str[max];
+char a[max];
 
 int main() {
-	int count=0;
-	char str[9] = { 0 };
-	for (int i = 0; i < 8; i++)
+	int j = 0;
+	int sum = 0, t = 1;
+	scanf("%s", &str);
+	if (str[0] == '0' && str[1] == '\0')
 	{
-		gets(str);
-		if (i%2==0)
+		printf("0");
+	}
+	if (str[0] == '0' && str[1] == '0' && str[2] == '\0')
+	{
+		printf("0");
+	}
+	int k = strlen(str) - 1;
+		for (int i = 0; i < strlen(str); i++)
 		{
-			for (int j = 0; j < 8; j++) {
-				if (str[j] == 'F')
+			if (str[k] == '1') {
+				sum += 1 * t;
+			}
+			if (str[k] == '0')
+				sum += 0;
+			t *= 2;
+			if (t == 8) {
+				if (sum == 0)
 				{
-					if (j % 2 == 0)
-					{
-						count++;
-					}
+					a[j] = 48;
 				}
+				else
+					a[j] = 48 + sum;
+				t = 1;
+				sum = 0;
+				j++;
+			}
+			k--;
+			if (k == -1)
+			{
+				a[j] = sum + 48;
 			}
 		}
-		else
-			for (int k = 0; k < 8; k++)
+		int size = strlen(a) - 1;
+		while (1) {
+			printf("%c", a[size]);
+			size--;
+			if (size < -1)
 			{
-				if (str[k] == 'F') {
-					if (k%2 ==1)
-					{
-						count++;
-					}
-				}
+				break;
 			}
-	}
-	printf("%d", count);
+		}
 	return 0;
 }
