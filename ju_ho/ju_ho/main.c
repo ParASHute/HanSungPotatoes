@@ -4,68 +4,19 @@
 
 int main() {
 	char N[11];
-	int a = 0;
-	int i = 0;
-	int j = 0;
+	int i, j;
 	int sum1 = 1, sum2 = 1;
+
 	scanf("%s", N);
 	for (int k = 0; k < strlen(N) - 1; k++) {
 		int b = strlen(N) - 1;
-		for (i = strlen(N)-1; i > k; i--)
+		for (i = strlen(N) - 1; i > k; i--)
 		{
-			if (N[b] == '0') {
-				sum1 *= 0;
-			}
-			if (N[b] == '1') {
-				sum1 *= 1;
-			}
-			if (N[b] == '2') {
-				sum1 *= 2;
-			}
-			if (N[b] == '3') {
-				sum1 *= 3;
-			}
-			if (N[b] == '4') {
-				sum1 *= 4;
-			}
-			if (N[b] == '5') {
-				sum1 *= 5;
-			}
-			if (N[b] == '6') {
-				sum1 *= 6;
-			}
-			if (N[b] == '7') {
-				sum1 *= 7;
-			}
-			if (N[b] == '8') {
-				sum1 *= 8;
-			}
-			if (N[b] == '9') {
-				sum1 *= 9;
-			}
+			sum1 *= (N[b] - '0');  // 이렇게 처리해줘도 됩니다. 
 			b--;
 		}
 		for (j = 0; j <= k; j++) {
-			if (N[j] == '0')
-				sum2 *= 0;
-			if (N[j] == '1')
-				sum2 *= 1;
-			if (N[j] == '2')
-				sum2 *= 2;
-			if (N[j] == '3')
-				sum2 *= 3;
-			if (N[j] == '4')
-				sum2 *= 4;
-			if (N[j] == '5')
-				sum2 *= 5;
-			if (N[j] == '6')
-				sum2 *= 6;
-			if (N[j] == '7')
-				sum2 *= 7;
-			if (N[j] == '8')
-				sum2 *= 8;
-			if (N[j] == '9')
-				sum2 *= 9;
+			sum2 *= (N[j] - 48);  // 0이 아스키코드 값이 48이라 같은 표현  
 		}
 		if (sum1 == sum2)
 		{
@@ -78,3 +29,7 @@ int main() {
 	printf("NO");
 	return 0;
 }
+
+//동건피드백
+//문제는 너무 잘 풀었는데 코드에 안쓰는 변수들이 넘 많아요.
+//코드에서 필요없는 변수들 지우고 기존 14줄,48줄 간단하게 구현하는 방법을 제안해봤어요.
