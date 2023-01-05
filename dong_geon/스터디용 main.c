@@ -1,27 +1,26 @@
 #include <stdio.h> 
+#include <string.h>
 
 int main(void)
 {
-	int k, i, arr[100001] = { 0 }, zerocnt = 0;
-	long long sum = 0;
-	scanf("%d", &k);
-	for (i = 0; i < k; i++) {
-		scanf("%d", &arr[i]);
-		if (arr[i] == 0)
+	int t, len;
+	double x;
+	char y[8];
+	scanf("%d", &t);
+	while (t--)
+	{
+		scanf("%lf %[^\n]", &x,y);
+		len = strlen(y);
+		for (int i = 0; i < len; i++)
 		{
-			for (int j = i - 1; j >= 0; j--)
-			{
-				if (arr[j] != 0) {
-					arr[j] = 0;
-					break;
-				}
-			}
+			if (y[i] == '@')
+				x *= 3;
+			else if (y[i] == '%')
+				x += 5;
+			else if (y[i] == '#')
+				x -= 7;
 		}
+		printf("%.2lf\n", x);
 	}
-	
-	for (i = 0; i < k; i++)
-		sum += arr[i];
-
-	printf("%lld", sum);
 }
 
