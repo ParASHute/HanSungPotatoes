@@ -2,26 +2,18 @@
 #include <stdio.h>
 
 int main() {
-	int T;
-	int H, W, N;
-	int X, Y;
-	scanf("%d", &T);
-	for (int i = 0; i < T; i++)
+	int sum, val; 
+	int x, y;
+	scanf("%d %d", &sum, &val);
+	if ((sum+val)%2 == 1 || sum < val)
 	{
-		scanf("%d %d %d", &H, &W, &N);
-		X = N % H;
-		Y = N / H +1;
-		if (X == 0)
-		{
-			X = H;
-			Y = Y - 1;
-		}
-		if (Y<10)
-		{
-			printf("%d0%d\n", X, Y);
-		}
-		else
-			printf("%d%d\n", X, Y);
+		printf("-1");
+	}
+	else
+	{
+		x = (sum + val) / 2;
+		y = sum - x;
+		printf("%d %d", x, y);
 	}
 	return 0;
 }
