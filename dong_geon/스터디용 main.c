@@ -3,24 +3,33 @@
 
 int main(void)
 {
-	int t, len;
-	double x;
-	char y[8];
-	scanf("%d", &t);
-	while (t--)
+	int n, i, len, cnt = 0;
+	char s[101];
+	scanf("%d", &n);
+	while (n--)
 	{
-		scanf("%lf %[^\n]", &x,y);
-		len = strlen(y);
-		for (int i = 0; i < len; i++)
-		{
-			if (y[i] == '@')
-				x *= 3;
-			else if (y[i] == '%')
-				x += 5;
-			else if (y[i] == '#')
-				x -= 7;
+		int alpha[27] = { 0 };
+		scanf("%s", s);
+		len = strlen(s);
+		if (len == 1)
+			cnt++;
+
+		alpha[s[0] - 'a'] = 1;
+		for (i = 1; i < len; i++) {
+			if (alpha[s[i] - 'a'] == 0)
+				alpha[s[i] - 'a'] = 1;
+			else
+			{
+				if (s[i] != s[i - 1])
+					break;
+			}
+
+			if (i == len - 1)
+				cnt++;
 		}
-		printf("%.2lf\n", x);
+		
 	}
+	printf("%d", cnt);
 }
+
 

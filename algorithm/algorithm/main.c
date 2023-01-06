@@ -1,28 +1,9 @@
-/* 백준 2738 정답 */
+/* 백준 1085 정답 */
 #include <stdio.h>
 int main(){
-    int n, m;
-    long a1[100][100];
-    long b1[100][100];
-    long ans[100][100];
-    
-    scanf("%d %d",&n,&m);
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
-            scanf("%ld", &a1[i][j]);
-        }
-    }
-    
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
-            scanf("%ld", &b1[i][j]);
-        }
-    }
-   
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
-            printf("%ld ", b1[i][j] + a1[i][j]);
-        }
-        printf("\n");
-    }
+    int x,y,w,h;
+    int line;
+    scanf("%d %d %d %d", &x, &y, &w, &h);
+    line = (w - x) > (h - y) ? ((h - y) < x ? ((h - y) < y ? (h - y) : y):(x < y ? x : y)) : ((w - x) < x ? ((w - x) < y ? (w - x) : y) : (x < y ? x : y));
+    printf("%d",line);
 }
