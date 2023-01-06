@@ -1,35 +1,19 @@
-#include <stdio.h> 
-#include <string.h>
+#include <stdio.h>
 
+int count[10001] = { 0 };
 int main(void)
 {
-	int n, i, len, cnt = 0;
-	char s[101];
+	int n, x, i, max = 0, min = 10001;
 	scanf("%d", &n);
-	while (n--)
+	for (i = 0; i < n; i++)
 	{
-		int alpha[27] = { 0 };
-		scanf("%s", s);
-		len = strlen(s);
-		if (len == 1)
-			cnt++;
-
-		alpha[s[0] - 'a'] = 1;
-		for (i = 1; i < len; i++) {
-			if (alpha[s[i] - 'a'] == 0)
-				alpha[s[i] - 'a'] = 1;
-			else
-			{
-				if (s[i] != s[i - 1])
-					break;
-			}
-
-			if (i == len - 1)
-				cnt++;
-		}
-		
+		scanf("%d", &x);
+		count[x]++;
 	}
-	printf("%d", cnt);
+	
+	for (i = 1; i < 10001; i++) {
+		for(int j=0; j<count[i]; j++)
+			printf("%d\n", i);
+	}
 }
-
 
