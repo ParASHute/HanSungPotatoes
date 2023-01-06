@@ -1,39 +1,27 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#define zero 48
+
 int main() {
-	char N[100] = { 0 };
-	int count = 0;
-	int sum = 0;
-	scanf("%s", N);
-	if (N[0] == 48)
+	int T;
+	int H, W, N;
+	int X, Y;
+	scanf("%d", &T);
+	for (int i = 0; i < T; i++)
 	{
-		printf("1");
-		return 0;
-	}
-	if (N[0]>48 && N[0] < 58 && N[1] == '\0')
-	{
-		for (int i = 0; i < 10; i++)
+		scanf("%d %d %d", &H, &W, &N);
+		X = N % H;
+		Y = N / H +1;
+		if (X == 0)
 		{
-			if (N[0] == i + zero) {
-				N[1] = i + zero;
-				N[0] = zero;
-				break;
-			}
+			X = H;
+			Y = Y - 1;
 		}
-	}
-	N[2] = N[0];
-	N[3] = N[1];
-	while (1)
-	{
-		sum = (N[0] - zero + N[1] - zero) % 10;
-		N[0] = N[1];
-		N[1] = sum + 48;
-		count++;
-		if (N[2] == N[0] && N[3] == N[1])
+		if (Y<10)
 		{
-			printf("%d", count);
-			break;
+			printf("%d0%d\n", X, Y);
 		}
+		else
+			printf("%d%d\n", X, Y);
+	}
 	return 0;
 }
