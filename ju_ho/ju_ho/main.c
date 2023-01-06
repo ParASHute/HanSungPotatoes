@@ -1,19 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
+
+char str[55] = { 0 };
 
 int main() {
-	int sum, val; 
-	int x, y;
-	scanf("%d %d", &sum, &val);
-	if ((sum+val)%2 == 1 || sum < val)
+	int N;
+	scanf("%d", &N);
+	getchar();
+	for (int i = 0; i < N; i++)
 	{
-		printf("-1");
-	}
-	else
-	{
-		x = (sum + val) / 2;
-		y = sum - x;
-		printf("%d %d", x, y);
+		fgets(str, 55, stdin);
+		printf("%d. %s", i+1, str);
 	}
 	return 0;
 }
