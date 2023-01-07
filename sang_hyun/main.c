@@ -30,3 +30,27 @@ int main() {
 	printf("%.2f",final_price * 1000);
 	return 0;
 }
+
+//이것보다
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	float price0, count,price1,a,b;
+
+	scanf("%f %f", &a, &b);
+	scanf("%f", &count);
+	price0 = a / b * 1000;
+
+	for (int i = 0; i < count; i++) {
+		scanf("%f %f", &a, &b);
+		price1 = a / b * 1000;
+		if (price0>price1) {
+			price0 = price1;
+		}
+		else {
+			price0 = price0;
+		}
+	}
+	printf("%.2f", price0);
+}
+//이 방법이 훨씬 깔끔한 듯
