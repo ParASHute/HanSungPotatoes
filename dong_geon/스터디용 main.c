@@ -3,24 +3,17 @@
 
 int main(void)
 {
-	int n, p, z, i, c[101] = { 0 }, money;
-	char name[101][21], max[101][21] = {0};
-	scanf("%d", &n);
-	for(z=0; z<n; z++)
-	{
-		int c[101] = { 0 };
-		money = 0;
-		scanf("%d", &p);
+	int i, len, leftsum = 0, rightsum = 0;
+	char s[9];
+	scanf("%s", s);
+	len = strlen(s);
+	for (i = len / 2 - 1; i >= 0; i--)
+		leftsum += (s[i] - '0');
+	for (i = len / 2; i < len; i++)
+		rightsum += (s[i] - '0');
 
-		for (i = 0; i < p; i++) {
-			scanf("%d %s", &c[i], name[i]);
-			if (money < c[i]) {
-				money = c[i];
-				strcpy(max[z],name[i]);
-			}
-		}
-
-	}
-	for (i = 0; i < n; i++)
-		printf("%s\n", max[i]);
+	if (leftsum == rightsum)
+		printf("LUCKY");
+	else
+		printf("READY");
 }
