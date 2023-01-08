@@ -3,17 +3,18 @@
 
 int main(void)
 {
-	int i, len, leftsum = 0, rightsum = 0;
-	char s[9];
+	int i, j, len, sum = 0, plus = 1;
+	char s[101];
 	scanf("%s", s);
 	len = strlen(s);
-	for (i = len / 2 - 1; i >= 0; i--)
-		leftsum += (s[i] - '0');
-	for (i = len / 2; i < len; i++)
-		rightsum += (s[i] - '0');
-
-	if (leftsum == rightsum)
-		printf("LUCKY");
-	else
-		printf("READY");
+	for (i = len-1; i >= 0; i--)
+	{
+		if (s[i] == ',') {
+			plus = 1;
+			continue;
+		}
+		sum += (plus * (s[i]-'0'));
+		plus *= 10;
+	}
+	printf("%d", sum);
 }
