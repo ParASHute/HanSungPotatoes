@@ -2,19 +2,24 @@
 #include <stdio.h>
 
 int main() {
-	int val = 0;
-	int max = 0;
-	int maxN = 0;
-	for (int i = 0; i < 9; i++)
+	int H, M;
+	int val=0;
+	scanf("%d %d", &H, &M);
+	if (M<45)
 	{
-		scanf("%d", &val);
-		if (val >= max)
+		val = 60 - (45 - M);
+		if (H == 0)
 		{
-			max = val;
-			maxN = i+1;
+			printf("23 %d", val);
+		}
+		else
+		{
+			printf("%d %d", H - 1, val);
 		}
 	}
-	printf("%d\n", max);
-	printf("%d", maxN);
+	else
+	{
+		printf("%d %d", H, M - 45);
+	}
 	return 0;
 }
