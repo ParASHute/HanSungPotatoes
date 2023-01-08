@@ -3,31 +3,24 @@
 
 int main(void)
 {
-	int i, z, count, max[3] = { 0 };
-	char arr[3][9];
-	for (i = 0; i < 3; i++)
-		scanf("%s", arr[i]);
-
-	for (z = 0; z < 3; z++) 
+	int n, p, z, i, c[101] = { 0 }, money;
+	char name[101][21], max[101][21] = {0};
+	scanf("%d", &n);
+	for(z=0; z<n; z++)
 	{
-		count = 1;
-		for (i = 0; i < 7; i++)
-		{
-			if (arr[z][i] == arr[z][i + 1]) {
-				count++;
-				if (max[z] <= count) {
-					max[z] = count;
-				}
-			}
-					
-			else if (arr[z][i] != arr[z][i + 1])
-			{	
-				if (max[z] <= count) {
-					max[z] = count;
-				}
-				count = 1;
+		int c[101] = { 0 };
+		money = 0;
+		scanf("%d", &p);
+
+		for (i = 0; i < p; i++) {
+			scanf("%d %s", &c[i], name[i]);
+			if (money < c[i]) {
+				money = c[i];
+				strcpy(max[z],name[i]);
 			}
 		}
+
 	}
-	printf("%d\n%d\n%d", max[0], max[1], max[2]);
+	for (i = 0; i < n; i++)
+		printf("%s\n", max[i]);
 }
