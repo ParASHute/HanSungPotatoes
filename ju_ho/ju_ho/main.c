@@ -1,17 +1,20 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <string.h>
-
-char str[55] = { 0 };
 
 int main() {
-	int N;
-	scanf("%d", &N);
-	getchar();
-	for (int i = 0; i < N; i++)
+	int val = 0;
+	int max = 0;
+	int maxN = 0;
+	for (int i = 0; i < 9; i++)
 	{
-		fgets(str, 55, stdin);
-		printf("%d. %s", i+1, str);
+		scanf("%d", &val);
+		if (val >= max)
+		{
+			max = val;
+			maxN = i+1;
+		}
 	}
+	printf("%d\n", max);
+	printf("%d", maxN);
 	return 0;
 }
