@@ -1,35 +1,20 @@
-#include <stdio.h> 
+#include <stdio.h>
 #include <string.h>
 
 int main(void)
 {
-	int n, i, len, cnt = 0;
+	int i, j, len, sum = 0, plus = 1;
 	char s[101];
-	scanf("%d", &n);
-	while (n--)
+	scanf("%s", s);
+	len = strlen(s);
+	for (i = len-1; i >= 0; i--)
 	{
-		int alpha[27] = { 0 };
-		scanf("%s", s);
-		len = strlen(s);
-		if (len == 1)
-			cnt++;
-
-		alpha[s[0] - 'a'] = 1;
-		for (i = 1; i < len; i++) {
-			if (alpha[s[i] - 'a'] == 0)
-				alpha[s[i] - 'a'] = 1;
-			else
-			{
-				if (s[i] != s[i - 1])
-					break;
-			}
-
-			if (i == len - 1)
-				cnt++;
+		if (s[i] == ',') {
+			plus = 1;
+			continue;
 		}
-		
+		sum += (plus * (s[i]-'0'));
+		plus *= 10;
 	}
-	printf("%d", cnt);
+	printf("%d", sum);
 }
-
-
