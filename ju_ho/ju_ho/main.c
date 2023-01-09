@@ -2,19 +2,26 @@
 #include <stdio.h>
 
 int main() {
-	int A, B, C, D;
-	int a, b, c;
-	int sum = 0;
-	scanf("%d %d %d", &A, &B, &C);
-	scanf("%d", &D);
-	sum = A * 3600 + B * 60 + C + D;
-	a = sum / 3600;
-	if (a >= 24)
+	int N;
+	int a;
+	int max;
+	int min;
+	scanf("%d", &N);
+	scanf("%d", &a);
+	max = a;
+	min = a;
+	for (int i = 0; i < N-1; i++)
 	{
-		a = a % 24;
+		scanf("%d", &a);
+		if (max < a)
+		{
+			max = a;
+		}
+		if (min > a)
+		{
+			min = a;
+		}
 	}
-	b = sum % 3600 / 60;
-	c = sum % 3600 % 60;
-	printf("%d %d %d", a, b, c);
+	printf("%d %d", min, max);
 	return 0;
 }
