@@ -1,24 +1,22 @@
-/* 백준 2920 정답 */
+/* 백준 3052 */
 #include <stdio.h>
 int main(){
-    int C_major[9] = {0};
-    int i;
-    for(i = 0; i < 8; i++){
-        scanf("%d",&C_major[i]);
-        if(i > 0){
-            if(C_major[i-1] + 1 != C_major[i] && C_major[i-1] - 1 != C_major[i]){
-                printf("mixed\n");
-                break;
+    int n[10] = {'\0'};
+    int a, k, l = 0, i = 0;
+    while(i < 10){
+        int count = 0;
+        scanf("%d",&a);
+        k = a % 42;
+        for(int j = 0; j < l; j++){
+            if(n[j] != k){
+                count++;
             }
         }
-    }
-    
-    if(i == 8){
-        if(C_major[6]+1 == C_major[7]){
-            printf("ascending\n");
+        if(count == i){
+            n[l] = k;
+            l++;
         }
-        if(C_major[6]-1 == C_major[7]){
-            printf("descending\n");
-        }
+        i++;
     }
+    printf("%d\n",l);
 }
