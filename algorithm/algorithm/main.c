@@ -1,9 +1,24 @@
-/* 백준 1085 정답 */
+/* 백준 2920 정답 */
 #include <stdio.h>
 int main(){
-    int x,y,w,h;
-    int line;
-    scanf("%d %d %d %d", &x, &y, &w, &h);
-    line = (w - x) > (h - y) ? ((h - y) < x ? ((h - y) < y ? (h - y) : y):(x < y ? x : y)) : ((w - x) < x ? ((w - x) < y ? (w - x) : y) : (x < y ? x : y));
-    printf("%d",line);
+    int C_major[9] = {0};
+    int i;
+    for(i = 0; i < 8; i++){
+        scanf("%d",&C_major[i]);
+        if(i > 0){
+            if(C_major[i-1] + 1 != C_major[i] && C_major[i-1] - 1 != C_major[i]){
+                printf("mixed\n");
+                break;
+            }
+        }
+    }
+    
+    if(i == 8){
+        if(C_major[6]+1 == C_major[7]){
+            printf("ascending\n");
+        }
+        if(C_major[6]-1 == C_major[7]){
+            printf("descending\n");
+        }
+    }
 }
