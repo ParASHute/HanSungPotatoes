@@ -2,15 +2,24 @@
 #include <stdio.h>
 
 int main() {
-	int major[10];
-	int a = 0, b = 0;
+	int a[15];
+	int count = 0, c;
 
-	for (int i = 0; i < 8; i++) {
-		scanf("%d", &major[i]);
-		if (i + 1 == major[i]) a++;
-		else if (8 - i == major[i])b++;
+	for (int i = 0; i < 10; i++) {
+		scanf("%d", &a[i]);
+		a[i] %= 42;
 	}
-	if (a == 8)printf("ascending");
-	else if (b == 8)printf("descending");
-	else printf("mixed");
+	for (int i = 0; i < 10; i++) {
+		for (int j = i; j < 10; j++) {
+			if (a[i] > a[j]) {
+				c = a[i];
+				a[i] = a[j];
+				a[j] = c;
+			}
+		}
+	}
+	for (int i = 0; i < 10; i++) {
+		if (a[i] != a[i + 1]) count++;
+	}
+	printf("%d", count);
 }
