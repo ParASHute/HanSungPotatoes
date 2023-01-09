@@ -2,19 +2,32 @@
 #include <stdio.h>
 
 int main() {
-	int A, B, C, D;
-	int a, b, c;
-	int sum = 0;
-	scanf("%d %d %d", &A, &B, &C);
-	scanf("%d", &D);
-	sum = A * 3600 + B * 60 + C + D;
-	a = sum / 3600;
-	if (a >= 24)
+	int B;
+	int a;
+	int count = 0;
+	int div[100];
+	for (int k = 0; k < 10; k++)
 	{
-		a = a % 24;
+		scanf("%d", &B);
+		div[k] = B % 42;
 	}
-	b = sum % 3600 / 60;
-	c = sum % 3600 % 60;
-	printf("%d %d %d", a, b, c);
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = i; j < 10; j++) {
+			if (div[i] > div[j])
+			{
+				a = div[i];
+				div[i] = div[j];
+				div[j] = a;
+			}
+		}
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (div[i] != div[i + 1]) {
+			count++;
+		}
+	}
+	printf("%d", count);
 	return 0;
 }
