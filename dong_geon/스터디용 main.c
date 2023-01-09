@@ -1,20 +1,34 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include <math.h>
 
-int main(void)
+int reverse(int n)
+{    
+    int r = 0;
+    while (n) {
+        r *= 10;
+        r += n % 10;
+        n /= 10;
+    }
+    return r;
+}
+
+void check(int x)
 {
-	int i, j, len, sum = 0, plus = 1;
-	char s[101];
-	scanf("%s", s);
-	len = strlen(s);
-	for (i = len-1; i >= 0; i--)
-	{
-		if (s[i] == ',') {
-			plus = 1;
-			continue;
-		}
-		sum += (plus * (s[i]-'0'));
-		plus *= 10;
-	}
-	printf("%d", sum);
+    int y;
+    y = reverse(x);
+    if (y == x)
+        printf("YES\n");
+    else
+        printf("NO\n");
+}
+
+int main(void) {
+    int T, n, i, sum = 0;
+    scanf("%d", &T);
+    while (T--) {
+        scanf("%d", &n);
+        sum = reverse(n) + n;
+        check(sum);
+    }
 }
