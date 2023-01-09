@@ -1,18 +1,24 @@
-/* 백준 1703 정답 */
+/* 백준 2920 정답 */
 #include <stdio.h>
 int main(){
-    int level,sf,sum = 1;
-    int a;
-    while(1){
-        scanf("%d",&a);
-        for(int i = 0; i < a; i++){
-            scanf("%d %d",&level,&sf);
-            sum = sum * level - sf;
+    int C_major[9] = {0};
+    int i;
+    for(i = 0; i < 8; i++){
+        scanf("%d",&C_major[i]);
+        if(i > 0){
+            if(C_major[i-1] + 1 != C_major[i] && C_major[i-1] - 1 != C_major[i]){
+                printf("mixed\n");
+                break;
+            }
         }
-        if(a == 0){
-            break;
+    }
+    
+    if(i == 8){
+        if(C_major[6]+1 == C_major[7]){
+            printf("ascending\n");
         }
-        printf("%d\n",sum);
-        sum = 1;
+        if(C_major[6]-1 == C_major[7]){
+            printf("descending\n");
+        }
     }
 }
