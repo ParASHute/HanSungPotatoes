@@ -1,22 +1,14 @@
-/* 백준 3052 정답*/
+/* 백준 2908 정답*/
 #include <stdio.h>
 int main(){
-    int n[10] = {0};
-    int a, k, l = 0;
-    int count = 0;
-    for(int i = 0; i < 10; i++){
-        scanf("%d",&a);
-        k = a % 42;
-        for(int j = 0; j < l; j++){
-            if(n[j] != k){
-                count++;
-            }
-        }
-        if(count == l){
-            n[l] = k;
-            l++;
-        }
-        count = 0;
-    }
-    printf("%d\n",l);
+    int a, b;
+    int a_ans, b_ans;
+    int a1,a2,a3,b1,b2,b3;
+    scanf("%d %d",&a,&b);
+    a1 = a % 10, b1 = b % 10;
+    a2 = (a / 10) % 10, b2 = (b / 10) % 10;
+    a3 = a / 100, b3 = b / 100;
+    a_ans = (a1 * 100) + (a2 * 10) + a3;
+    b_ans = (b1 * 100) + (b2 * 10) + b3;
+    a_ans > b_ans ? printf("%d",a_ans) : printf("%d",b_ans);
 }
