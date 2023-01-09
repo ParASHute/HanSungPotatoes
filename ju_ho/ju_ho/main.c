@@ -2,34 +2,19 @@
 #include <stdio.h>
 
 int main() {
-	int count=0;
-	char str[9] = { 0 };
-	for (int i = 0; i < 8; i++)
+	int A, B, C, D;
+	int a, b, c;
+	int sum = 0;
+	scanf("%d %d %d", &A, &B, &C);
+	scanf("%d", &D);
+	sum = A * 3600 + B * 60 + C + D;
+	a = sum / 3600;
+	if (a >= 24)
 	{
-		gets(str);
-		if (i%2==0)
-		{
-			for (int j = 0; j < 8; j++) {
-				if (str[j] == 'F')
-				{
-					if (j % 2 == 0)
-					{
-						count++;
-					}
-				}
-			}
-		}
-		else
-			for (int k = 0; k < 8; k++)
-			{
-				if (str[k] == 'F') {
-					if (k%2 ==1)
-					{
-						count++;
-					}
-				}
-			}
+		a = a % 24;
 	}
-	printf("%d", count);
+	b = sum % 3600 / 60;
+	c = sum % 3600 % 60;
+	printf("%d %d %d", a, b, c);
 	return 0;
 }

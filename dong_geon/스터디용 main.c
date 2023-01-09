@@ -1,27 +1,20 @@
-#include <stdio.h> 
+#include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
-	int k, i, arr[100001] = { 0 }, zerocnt = 0;
-	long long sum = 0;
-	scanf("%d", &k);
-	for (i = 0; i < k; i++) {
-		scanf("%d", &arr[i]);
-		if (arr[i] == 0)
-		{
-			for (int j = i - 1; j >= 0; j--)
-			{
-				if (arr[j] != 0) {
-					arr[j] = 0;
-					break;
-				}
-			}
+	int i, j, len, sum = 0, plus = 1;
+	char s[101];
+	scanf("%s", s);
+	len = strlen(s);
+	for (i = len-1; i >= 0; i--)
+	{
+		if (s[i] == ',') {
+			plus = 1;
+			continue;
 		}
+		sum += (plus * (s[i]-'0'));
+		plus *= 10;
 	}
-	
-	for (i = 0; i < k; i++)
-		sum += arr[i];
-
-	printf("%lld", sum);
+	printf("%d", sum);
 }
-
