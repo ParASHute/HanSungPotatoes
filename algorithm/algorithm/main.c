@@ -1,9 +1,18 @@
-/* 백준 1085 정답 */
+/* 백준 1703 정답 */
 #include <stdio.h>
 int main(){
-    int x,y,w,h;
-    int line;
-    scanf("%d %d %d %d", &x, &y, &w, &h);
-    line = (w - x) > (h - y) ? ((h - y) < x ? ((h - y) < y ? (h - y) : y):(x < y ? x : y)) : ((w - x) < x ? ((w - x) < y ? (w - x) : y) : (x < y ? x : y));
-    printf("%d",line);
+    int level,sf,sum = 1;
+    int a;
+    while(1){
+        scanf("%d",&a);
+        for(int i = 0; i < a; i++){
+            scanf("%d %d",&level,&sf);
+            sum = sum * level - sf;
+        }
+        if(a == 0){
+            break;
+        }
+        printf("%d\n",sum);
+        sum = 1;
+    }
 }
