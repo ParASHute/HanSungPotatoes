@@ -2,19 +2,21 @@
 #include <stdio.h>
 
 int main() {
-	int A, B, C, D;
-	int a, b, c;
-	int sum = 0;
-	scanf("%d %d %d", &A, &B, &C);
-	scanf("%d", &D);
-	sum = A * 3600 + B * 60 + C + D;
-	a = sum / 3600;
-	if (a >= 24)
+    int T;
+	int R;
+	char S[23] = { 0 };
+    scanf("%d", &T);
+	for (int i = 0; i < T; i++)
 	{
-		a = a % 24;
+		scanf("%d %s", &R, S);
+		for (int k = 0; S[k] != '\0'; k++)
+		{
+			for (int j = 0; j < R; j++)
+			{
+				printf("%c", S[k]);
+			}
+		}
+		printf("\n");
 	}
-	b = sum % 3600 / 60;
-	c = sum % 3600 % 60;
-	printf("%d %d %d", a, b, c);
 	return 0;
 }
