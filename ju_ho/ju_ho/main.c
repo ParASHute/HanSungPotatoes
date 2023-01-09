@@ -2,32 +2,26 @@
 #include <stdio.h>
 
 int main() {
-	int B;
+	int N;
 	int a;
-	int count = 0;
-	int div[100];
-	for (int k = 0; k < 10; k++)
+	int max;
+	int min;
+	scanf("%d", &N);
+	scanf("%d", &a);
+	max = a;
+	min = a;
+	for (int i = 0; i < N-1; i++)
 	{
-		scanf("%d", &B);
-		div[k] = B % 42;
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = i; j < 10; j++) {
-			if (div[i] > div[j])
-			{
-				a = div[i];
-				div[i] = div[j];
-				div[j] = a;
-			}
+		scanf("%d", &a);
+		if (max < a)
+		{
+			max = a;
+		}
+		if (min > a)
+		{
+			min = a;
 		}
 	}
-	for (int i = 0; i < 10; i++)
-	{
-		if (div[i] != div[i + 1]) {
-			count++;
-		}
-	}
-	printf("%d", count);
+	printf("%d %d", min, max);
 	return 0;
 }
