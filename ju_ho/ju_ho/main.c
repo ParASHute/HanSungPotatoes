@@ -2,24 +2,23 @@
 #include <stdio.h>
 
 int main() {
-	int H, M;
-	int val=0;
-	scanf("%d %d", &H, &M);
-	if (M<45)
-	{
-		val = 60 - (45 - M);
-		if (H == 0)
+	int a;
+	int bran = 0;
+	int cut = 0;
+	int val = 1;
+	while (1) {
+		scanf("%d", &a);
+		for (int i = 0; i < a; i++)
 		{
-			printf("23 %d", val);
+			scanf("%d %d", &bran,&cut);
+			val = val * bran - cut;
 		}
-		else
+		if (a == 0)
 		{
-			printf("%d %d", H - 1, val);
+			break;
 		}
-	}
-	else
-	{
-		printf("%d %d", H, M - 45);
+		printf("%d\n", val);
+		val = 1;
 	}
 	return 0;
 }
