@@ -2,21 +2,32 @@
 #include <stdio.h>
 
 int main() {
-    int T;
-	int R;
-	char S[23] = { 0 };
-    scanf("%d", &T);
-	for (int i = 0; i < T; i++)
+	int B;
+	int a;
+	int count = 0;
+	int div[100];
+	for (int k = 0; k < 10; k++)
 	{
-		scanf("%d %s", &R, S);
-		for (int k = 0; S[k] != '\0'; k++)
-		{
-			for (int j = 0; j < R; j++)
+		scanf("%d", &B);
+		div[k] = B % 42;
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = i; j < 10; j++) {
+			if (div[i] > div[j])
 			{
-				printf("%c", S[k]);
+				a = div[i];
+				div[i] = div[j];
+				div[j] = a;
 			}
 		}
-		printf("\n");
 	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (div[i] != div[i + 1]) {
+			count++;
+		}
+	}
+	printf("%d", count);
 	return 0;
 }
