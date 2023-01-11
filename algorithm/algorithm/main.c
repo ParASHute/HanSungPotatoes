@@ -1,28 +1,34 @@
-/* 백준 2577 정답*/
+/* 백준 2231 정답 */
 #include <stdio.h>
 int main(){
-    int arr[9];
-    int a,t = 1, k;
-    int count = 0,count1 = 0;
-    for(int i = 0; i < 3; i++){
-        scanf("%d",&a);
-        t *= a;
-    }
-    for(int i = 0; i < 9; i++){
-        k = t % 10;
-        arr[i] = k;
-        t /= 10;
-        if(t != 0){
-            count1++;
+    int n,a,b = 1,c;
+    int min = 1000000, sum = 0, sum2 = 0;
+    scanf("%d",&n);
+    a = n;
+    for(int i = 0; i < 7; i++){
+        a /= 10;
+        if(a != 0){
+            b++;
         }
     }
-    for(int i = 0; i < 10; i++){
-        for(int j = 0; j < count1+1; j++){
-            if(arr[j] == i){
-                count++;
+    for(int i = 0; i < n; i++){
+        sum = n - i;
+        c = sum;
+        for(int j = 0; j < b; j++){
+            sum2 += sum % 10;
+            sum /= 10;
+        }
+        if((n - c) == sum2){
+            if(min > c){
+                min = c;
             }
         }
-        printf("%d\n",count);
-        count = 0;
+        sum2 = 0;
+    }
+    if(min == 1000000){
+        printf("0");
+    }
+    else{
+        printf("%d",min);
     }
 }
