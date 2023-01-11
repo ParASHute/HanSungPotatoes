@@ -1,14 +1,10 @@
-/* 백준 2908 정답*/
+/* 백준 2884 정답*/
 #include <stdio.h>
 int main(){
-    int a, b;
-    int a_ans, b_ans;
-    int a1,a2,a3,b1,b2,b3;
-    scanf("%d %d",&a,&b);
-    a1 = a % 10, b1 = b % 10;
-    a2 = (a / 10) % 10, b2 = (b / 10) % 10;
-    a3 = a / 100, b3 = b / 100;
-    a_ans = (a1 * 100) + (a2 * 10) + a3;
-    b_ans = (b1 * 100) + (b2 * 10) + b3;
-    a_ans > b_ans ? printf("%d",a_ans) : printf("%d",b_ans);
+    int sH,sM;
+    int m;
+    scanf("%d %d",&sH,&sM);
+    if(sH == 0) sH = 24;
+    m = ((sH * 60) + sM) - 45;
+    (m/60) == 24 ? printf("0 %d", (m % 60)) : printf("%d %d", (m/60), (m % 60));
 }
