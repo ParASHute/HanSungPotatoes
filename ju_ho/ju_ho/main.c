@@ -2,20 +2,30 @@
 #include <stdio.h>
 
 int main() {
-	char str[1000000] = { 0 };
+	int N;
 	int count = 0;
-	scanf("%[^\n]s", str);
-	for (int i = 0; i < strlen(str); i++)
+	int sum = 0;
+	char str[82] = { 0 };
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
 	{
-		if ((str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <='z') && str[i+1] == ' ')
+		scanf("%s", str);
+		for (int i = 0; i < strlen(str); i++)
 		{
-			count++;
+			if (str[i] == 'O')
+			{
+				count++;
+				if (str[i + 1] == 'X')
+				{
+					sum += count;
+					count = 0;
+				}
+				sum += count;
+			}
 		}
-		if ((str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <= 'z') && str[i + 1] == '\0')
-		{
-			count++;
-		}
+		printf("%d\n", sum);
+		sum = 0;
+		count = 0;
 	}
-	printf("%d", count);
 	return 0;
 }
