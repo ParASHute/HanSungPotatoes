@@ -2,24 +2,30 @@
 #include <stdio.h>
 
 int main() {
-	int a[15];
-	int count = 0, c;
+	int n, a = 0, c, d, ans = 1000000, sum;
+	int b = 1;
+	scanf("%d", &n);
 
-	for (int i = 0; i < 10; i++) {
-		scanf("%d", &a[i]);
-		a[i] %= 42;
+	while (n / b != 0) {
+		a++;
+		b *= 10;
 	}
-	for (int i = 0; i < 10; i++) {
-		for (int j = i; j < 10; j++) {
-			if (a[i] > a[j]) {
-				c = a[i];
-				a[i] = a[j];
-				a[j] = c;
-			}
+
+	c = n;
+	d = 9 * a;
+
+	while (1) {
+		sum = 0;
+		n--;
+		int k = 1, x = n;
+		for (int k = 0; k < a; k++) {
+			sum += x % 10;
+			x /= 10;
 		}
+		if (sum + n == c && ans > n) ans = n;
+		if (n == c - d)break;
 	}
-	for (int i = 0; i < 10; i++) {
-		if (a[i] != a[i + 1]) count++;
-	}
-	printf("%d", count);
+
+	if (ans == 1000000) printf("0");
+	else printf("%d", ans);
 }
