@@ -3,25 +3,49 @@
 
 int main() {
 	int N;
+	int sum = 00;
 	int a;
-	int max;
-	int min;
+	int k = 10;
+	int j = 1;
+	int b = 1;
+	int min=0;
+	int count = 0;
 	scanf("%d", &N);
-	scanf("%d", &a);
-	max = a;
-	min = a;
-	for (int i = 0; i < N-1; i++)
+	a = N;
+	sum = a;
+	while (N/b != 0)
 	{
-		scanf("%d", &a);
-		if (max < a)
+		count++;
+		b *= 10;
+	}
+//	while (1)
+//	{
+	for (int q = N; q > 0; q--) {
+		for (int i = 0; i < count; i++)
 		{
-			max = a;
+			sum += (a % k) / j;
+			j *= 10;
+			k *= 10;
 		}
-		if (min > a)
+		if (N == sum)
 		{
+			if (min > a)
+			{
+				min = a;
+				break;
+			}
 			min = a;
 		}
+		else if (N<10 && N%2 == 1 || N == 1000000)
+		{
+			printf("0");
+			return 0;
+		}
+		a--;
+		sum = a;
+		j = 1;
+		k = 10;
 	}
-	printf("%d %d", min, max);
+	printf("%d", min);
 	return 0;
 }
