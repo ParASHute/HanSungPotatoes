@@ -2,50 +2,20 @@
 #include <stdio.h>
 
 int main() {
-	int N;
-	int sum = 00;
-	int a;
-	int k = 10;
-	int j = 1;
-	int b = 1;
-	int min=0;
+	char str[1000000] = { 0 };
 	int count = 0;
-	scanf("%d", &N);
-	a = N;
-	sum = a;
-	while (N/b != 0)
+	scanf("%[^\n]s", str);
+	for (int i = 0; i < strlen(str); i++)
 	{
-		count++;
-		b *= 10;
+		if ((str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <='z') && str[i+1] == ' ')
+		{
+			count++;
+		}
+		if ((str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <= 'z') && str[i + 1] == '\0')
+		{
+			count++;
+		}
 	}
-//	while (1)
-//	{
-	for (int q = N; q > 0; q--) {
-		for (int i = 0; i < count; i++)
-		{
-			sum += (a % k) / j;
-			j *= 10;
-			k *= 10;
-		}
-		if (N == sum)
-		{
-			if (min > a)
-			{
-				min = a;
-				break;
-			}
-			min = a;
-		}
-		else if (N<10 && N%2 == 1 || N == 1000000)
-		{
-			printf("0");
-			return 0;
-		}
-		a--;
-		sum = a;
-		j = 1;
-		k = 10;
-	}
-	printf("%d", min);
+	printf("%d", count);
 	return 0;
 }
