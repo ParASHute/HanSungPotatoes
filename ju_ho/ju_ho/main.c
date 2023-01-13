@@ -3,25 +3,23 @@
 
 int main() {
 	int N;
-	int a;
-	int max;
-	int min;
+	double sum = 0.0, sum1 = 0.0;
+	double A[10000] = { 0 };
+	double max = 0;
 	scanf("%d", &N);
-	scanf("%d", &a);
-	max = a;
-	min = a;
-	for (int i = 0; i < N-1; i++)
+	for (int i = 0; i < N; i++)
 	{
-		scanf("%d", &a);
-		if (max < a)
+		scanf("%d", &A[i]);
+		if (max < A[i])
 		{
-			max = a;
-		}
-		if (min > a)
-		{
-			min = a;
+			max = A[i];
 		}
 	}
-	printf("%d %d", min, max);
+	for (int j = 0; j < N; j++)
+	{
+		sum1 += (A[j] / max) * 100.0;
+	}
+	sum = sum1 / N;
+	printf("%f", sum);
 	return 0;
 }
