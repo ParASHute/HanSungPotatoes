@@ -1,39 +1,50 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include <math.h>
+
 int main(void)
 {
-	int len, i,j, count[92] = { 0 };   //배열의 크기가 92인이유는 아스키 A부터 Z까지 (65~92) 개수를 넣어줄 것임.
-	char arr[1000001];
-	scanf("%s", arr);
-	len = strlen(arr);
-	for (i = 0; i < len; i++)
-	{
-		if (arr[i] >= 97)  // 소문자 일 때
-			arr[i] = toupper(arr[i]);  //대문자로 바꿔줍니다
-	}
-	for (i = 0; i < len; i++)
-	{
-		count[arr[i]]++;    
-	}
-	int max = 0;
-	for (i = 65; i < 91; i++)
-	{
-		if (max < count[i]) {  
-			max = count[i];  //개수
-			j = i;   //알파벳의 아스키코드
-		}
-	}
-	for (i = 65; i < 91; i++)
-	{
-		if (i != j)
-		{
-			if (count[i] == count[j]) {
-				printf("?");
-				return 0;
+	double a, b, c;  //c가 가장 긴 변
+	int n = 1;
+	while (1) {
+		scanf("%lf %lf %lf", &a, &b, &c);
+		if (a == 0 && b == 0 && c == 0)
+			break;
+		if (a < 0) {
+			a = sqrt(pow(c, 2.0) - pow(b, 2.0));
+			if (c < a + b) {
+				printf("Triangle #%d\n", n);
+				printf("a = %.3lf\n\n",a);
+			}
+			else {
+				printf("Triangle #%d\n", n);
+				printf("Impossible.\n\n");
 			}
 		}
+		if (b < 0) {
+			b = sqrt(pow(c, 2.0) - pow(a, 2.0));
+			if (c < a + b) {
+				printf("Triangle #%d\n", n);
+				printf("b = %.3lf\n\n", b);
+			}
+			else {
+				printf("Triangle #%d\n", n);
+				printf("Impossible.\n\n");
+			}
+		}
+		if (c < 0) {
+			c = sqrt(pow(a, 2.0) + pow(b, 2.0));
+			if (c < a + b) {
+				printf("Triangle #%d\n", n);
+				printf("c = %.3lf\n\n", c);
+			}
+			else {
+				printf("Triangle #%d\n", n);
+				printf("Impossible.\n\n");
+			}
+		}
+		
+		n++;
+
 	}
-	printf("%c", j);
-	return 0;
+
 }
