@@ -2,24 +2,17 @@
 #include <stdio.h>
 
 int main() {
-	int N;
-	double sum = 0.0, sum1 = 0.0;
-	double A[10000] = { 0 };
-	double max = 0;
-	scanf("%d", &N);
-	for (int i = 0; i < N; i++)
-	{
-		scanf("%d", &A[i]);
-		if (max < A[i])
-		{
-			max = A[i];
-		}
-	}
-	for (int j = 0; j < N; j++)
-	{
-		sum1 += (A[j] / max) * 100.0;
-	}
-	sum = sum1 / N;
-	printf("%f", sum);
+	int x, y, w, h;
+	int a, b, c, d;
+	int line;
+	scanf("%d %d %d %d", &x, &y, &w, &h);
+	a = x;
+	b = y;
+	c = w - x;
+	d = h - y;
+	line = c > d ? d : c;
+	line = line > b ? b : line;
+	line = line > a ? a : line;
+	printf("%d", line);
 	return 0;
 }
