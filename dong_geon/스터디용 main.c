@@ -1,47 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-int arr[1000001];
-int static compare(const void* first, const void* second)
-{
-	if (*(int*)first < *(int*)second)
-		return 1;
-	else if (*(int*)first > *(int*)second)
-		return -1;
-	else
-		return 0;
-}
-
+#include <string.h>
+#include <ctype.h>
 int main(void)
 {
-	int n, i;
-	int a, b, c, max = 0; //a가 가장 긴 변 a<b+c
-	scanf("%d", &n);
-	for (i = 0; i < n; i++) {
-		scanf("%d", &arr[i]);
-	}
-	qsort(arr, n, 4, compare);
-	for (i = 0; i < n - 2; i++)
+	int len, i,j, count[92] = { 0 };   //배열의 크기가 92인이유는 아스키 A부터 Z까지 (65~92) 개수를 넣어줄 것임.
+	char arr[1000001];
+	scanf("%s", arr);
+	len = strlen(arr);
+	for (i = 0; i < len; i++)
 	{
-		a = arr[i];
-		for (int j = i + 1; j < n - 1; j++)
-		{
-			b = arr[j];
-			c = arr[j + 1];
-			if (max < a + b + c)  //이 조건을 해줘야 시간초과가 안뜸!
-			{
-				if (a < b + c)
-				{
-					if (max < a + b + c)
-						max = a + b + c;
-				}
-			}
-			else
-				break;
+		if (arr[i] >= 97)  // 소문자 일 때
+			arr[i] = toupper(arr[i]);  //대문자로 바꿔줍니다
+	}
+	for (i = 0; i < len; i++)
+	{
+		count[arr[i]]++;    
+	}
+	int max = 0;
+	for (i = 65; i < 91; i++)
+	{
+		if (max < count[i]) {  
+			max = count[i];  //개수
+			j = i;   //알파벳의 아스키코드
 		}
 	}
-	if (max == 0)
-		printf("-1");
-	else
-		printf("%d", max);
+	for (i = 65; i < 91; i++)
+	{
+		if (i != j)
+		{
+			if (count[i] == count[j]) {
+				printf("?");
+				return 0;
+			}
+		}
+	}
+	printf("%c", j);
+	return 0;
 }
