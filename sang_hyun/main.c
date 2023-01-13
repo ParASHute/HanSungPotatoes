@@ -59,4 +59,43 @@ int main() {
 	printf("%.2f", price0);
 }
 //이 방법이 훨씬 깔끔한 듯
->>>>>>> 3539b01bbc6b494d4883bdeb81d7e17375360873
+//2480 주사위 문제
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	int a, b, c;
+	scanf("%d %d %d", &a, &b, &c);
+	if (a == b && b==c) {
+		printf("%d", 10000 + (a * 1000));
+	}
+	else if (a == b || b == c || a == c) {
+		if (a != c) {
+			printf("%d", 1000 + b * 100);
+		}
+		else if (b != c) {
+			printf("%d", 1000 + a * 100);
+		}
+		else if (a != b) {
+			printf("%d", 1000 + c * 100);
+		}
+	}
+	else {
+		if (a > b) {
+			if (c > a) {
+				printf("%d", 100 * c);
+			}
+			else {
+				printf("%d", 100 * a);
+			}
+		}
+		else {
+			if (b < c) {
+				printf("%d", 100 * c);
+			}
+			else {
+				printf("%d", 100 * b);
+			}
+		}
+	}
+}
+//무지성 나열형보다는 &&(and)와 ||(or)연산자를 이용한 요약 생각!!!
