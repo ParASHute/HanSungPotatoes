@@ -2,41 +2,24 @@
 #include <stdio.h>
 
 int main() {
-    char c1[10] = { 0 };
-    char c2[10] = { 0 };
-    scanf("%s %s", c1, c2);
-    c1[5] = c1[0];
-    c1[4] = c1[1];
-    c1[3] = c1[2];
-    c2[5] = c2[0];
-    c2[4] = c2[1];
-    c2[3] = c2[2];
-    if (c1[3] > c2[3])
-    {   
-        for (int i = 3; i < 6; i++)
-        {
-            printf("%c", c1[i]);
-        }
-    }
-    else if (c1[3] == c2[3] && c1[4] > c2[4])
-    {
-        for (int i = 3; i < 6; i++)
-        {
-            printf("%c", c1[i]);
-        }
-    }
-    else if (c1[3] == c2[3] && c1[4] == c2[4] && c1[5] > c2[5])
-    {
-        for (int i = 3; i < 6; i++)
-        {
-            printf("%c", c1[i]);
-        }
-    }
-    else {
-        for (int i = 3; i < 6; i++)
-        {
-            printf("%c", c2[i]);
-        }
-    }
-    return 0;
+	int N;
+	double sum = 0.0, sum1 = 0.0;
+	double A[10000] = { 0 };
+	double max = 0;
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%d", &A[i]);
+		if (max < A[i])
+		{
+			max = A[i];
+		}
+	}
+	for (int j = 0; j < N; j++)
+	{
+		sum1 += (A[j] / max) * 100.0;
+	}
+	sum = sum1 / N;
+	printf("%f", sum);
+	return 0;
 }

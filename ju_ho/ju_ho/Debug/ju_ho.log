@@ -1,2 +1,3 @@
 ﻿  main.c
+C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\ju_ho\main.c(12,9): warning C4477: 'scanf' : 서식 문자열 '%d'에 'int *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'double *'입니다.
   ju_ho.vcxproj -> C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\Debug\ju_ho.exe
