@@ -1,16 +1,23 @@
-#include <stdio.h>  //오늘의 교훈 쓸데없이 배열을 사용하지말고 간단히 생각하자..
+#include <stdio.h>
 
 int main(void)
 {
-	int a, b, n, x;
-	scanf("%d %d %d", &a, &b, &n);
-
-	for (int i = 0; i < n; i++)
+	int n, i, j, sum = 0, count = 0;
+	scanf("%d", &n);
+	for (i = 1; i <= n; i++)
 	{
-		a %= b;
-		a *= 10;
-		x = a / b;	
+		sum = 0;
+		for (j = i; j <= n; j++)
+		{
+			sum += j;
+			if (sum == n) {
+				count++;
+				break;
+			}
+
+			if (sum > n)
+				break;
+		}
 	}
-	printf("%d", x);
-	return 0;
+	printf("%d", count);
 }
