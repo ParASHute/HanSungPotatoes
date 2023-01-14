@@ -1,21 +1,23 @@
 #include <stdio.h>
-#include <math.h>
 
 int main(void)
 {
-	double n, i, k, c = 0, pas = 1;
-	scanf("%lf %lf", &n, &k);
-
-	k -= 1;
-	n -= 1;
-	if (k == 0)
-		printf("1");
-	else {
-		for (i = 0; i < k; i++)
+	int n, i, j, sum = 0, count = 0;
+	scanf("%d", &n);
+	for (i = 1; i <= n; i++)
+	{
+		sum = 0;
+		for (j = i; j <= n; j++)
 		{
-			pas *= ((n - c) / (i + 1.0));
-			c += 1.0;
+			sum += j;
+			if (sum == n) {
+				count++;
+				break;
+			}
+
+			if (sum > n)
+				break;
 		}
-		printf("%.0lf", pas);
 	}
+	printf("%d", count);
 }
