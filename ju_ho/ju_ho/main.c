@@ -2,17 +2,35 @@
 #include <stdio.h>
 
 int main() {
-	int x, y, w, h;
-	int a, b, c, d;
-	int line;
-	scanf("%d %d %d %d", &x, &y, &w, &h);
-	a = x;
-	b = y;
-	c = w - x;
-	d = h - y;
-	line = c > d ? d : c;
-	line = line > b ? b : line;
-	line = line > a ? a : line;
-	printf("%d", line);
+	int x, y, z, a;
+	while (1)
+	{
+		scanf("%d %d %d", &x, &y, &z);
+		if (x > y && y > z || x > z && z > y)
+		{
+			a = z;
+			z = x;
+			x = a;
+		}
+		else if (y > z && z > x || y > x && x > z)
+		{
+			a = z;
+			z = y;
+			z = a;
+		}
+		if (x == 0 && y == 0 && z == 0)
+		{
+			break;
+		}
+		if (x * x + y * y == z * z)
+		{
+			printf("right\n");
+		}
+		else 
+		{
+			printf("wrong\n");
+		}
+		
+	}
 	return 0;
 }
