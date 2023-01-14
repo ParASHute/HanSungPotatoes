@@ -16,7 +16,7 @@ int main() {
 		{
 			a = z;
 			z = y;
-			z = a;
+			y = a;
 		}
 		if (x == 0 && y == 0 && z == 0)
 		{
