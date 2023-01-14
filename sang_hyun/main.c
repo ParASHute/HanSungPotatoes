@@ -99,3 +99,20 @@ int main() {
 	}
 }
 //무지성 나열형보다는 &&(and)와 ||(or)연산자를 이용한 요약 생각!!!
+
+//별찍기 2
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	int a;
+	scanf("%d", &a);
+	for (int i = 0; i < a; i++) {
+		for (int b = a - i; b > 1; b--) { //범위로 한계를 정해줘야 함. 이때 _ 자리는 점점 줄어들어야 하니까
+			printf(" ");  		  // --로 줄어들어야 함.
+		}
+		for (int c = a - i; c < a + 1; c++) {
+			printf("*"); 
+		}
+		printf("\n");
+	}
+}
