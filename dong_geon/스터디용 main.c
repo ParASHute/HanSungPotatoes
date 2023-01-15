@@ -1,32 +1,35 @@
 #include <stdio.h>
 
+double paskal(double n, double k)
+{
+	double i, z = 0, pas = 1;
+	k -= 1;
+	n -= 1;
+	if (k == 0)
+		return 1;
+	else {
+		for (i = 0; i < k; i++)
+		{
+			pas *= ((n - z) / (i + 1.0));
+			z += 1.0;
+		}
+		return pas;
+	}
+}
+
 int main(void)
 {
-	int i, j, u, n, m, k;
-	int A[101][101] = { 0 }, B[101][101] = { 0 };
-	scanf("%d %d", &n, &m);
-	for (i = 0; i < n; i++)
+	double r, c, w, sum = 0, floor;
+	scanf("%lf %lf %lf", &r, &c, &w);
+	floor = c;  // c를 어디까지 더해줘야 할까? -> floor
+	for (double j = r; j < r + w; j++)
 	{
-		for (j = 0; j < m; j++)
-			scanf("%d", &A[i][j]);
-	}
-	scanf("%d %d", &m, &k);
-	for (i = 0; i < m; i++)
-	{
-		for (j = 0; j < k; j++)
-			scanf("%d", &B[i][j]);
-	}
-	for (i = 0; i < n; i++)
-	{
-		for (j = 0; j < k; j++)
-		{
-			int sum = 0;
-			for (u = 0; u < m; u++)
-			{
-				sum += A[i][u] * B[u][j];
-			}
-			printf("%d ", sum);
+		for (double p = c; p <= floor; p++) {
+			sum += paskal(j, p);
+			//printf("%.0lf ", paskal(j, p)); 원소 확인
 		}
-		printf("\n");
+		floor++;
 	}
+
+	printf("%.0lf", sum);
 }
