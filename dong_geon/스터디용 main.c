@@ -1,35 +1,34 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-double paskal(double n, double k)
+int static compare(const void* first, const void* second)
 {
-	double i, z = 0, pas = 1;
-	k -= 1;
-	n -= 1;
-	if (k == 0)
-		return 1;
-	else {
-		for (i = 0; i < k; i++)
-		{
-			pas *= ((n - z) / (i + 1.0));
-			z += 1.0;
-		}
-		return pas;
-	}
+    if (*(int*)first > *(int*)second)
+        return 1;
+    else if (*(int*)first < *(int*)second)
+        return -1;
+    else
+        return 0;
 }
 
 int main(void)
 {
-	double r, c, w, sum = 0, floor;
-	scanf("%lf %lf %lf", &r, &c, &w);
-	floor = c;  // c를 어디까지 더해줘야 할까? -> floor
-	for (double j = r; j < r + w; j++)
-	{
-		for (double p = c; p <= floor; p++) {
-			sum += paskal(j, p);
-			//printf("%.0lf ", paskal(j, p)); 원소 확인
-		}
-		floor++;
-	}
+    int score[8], i, j, max = 0, high[8], sum = 0;
+    for (i = 0; i < 8; i++) {
+        scanf("%d", &score[i]);
+        high[i]=score[i];
+    }
 
-	printf("%.0lf", sum);
+    qsort(score, 8, 4, compare);
+    for (i = 3; i < 8; i++)
+        sum += score[i];
+    printf("%d\n", sum);
+    for (i = 0; i < 8; i++)
+    {
+        for (j = 3; j < 8; j++)
+        {
+            if (score[j] == high[i])
+                printf("%d ", i + 1);
+        }
+    }
 }
