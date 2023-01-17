@@ -1,34 +1,34 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
-int static compare(const void* first, const void* second)
+int reverse(int n)
 {
-    if (*(int*)first > *(int*)second)
-        return 1;
-    else if (*(int*)first < *(int*)second)
-        return -1;
-    else
-        return 0;
+	int num[10] = { 0 };
+	int len, i;
+	while (n != 0)
+	{
+		num[n % 10]++;
+		n /= 10;
+	}
+	for (i = 0; i < 10; i++)
+	{
+		if (num[i] > 1)  //2개 이상 나왔다면
+			return 0;
+	}
+	return 1;
 }
 
 int main(void)
 {
-    int score[8], i, j, max = 0, high[8], sum = 0;
-    for (i = 0; i < 8; i++) {
-        scanf("%d", &score[i]);
-        high[i]=score[i];
-    }
-
-    qsort(score, 8, 4, compare);
-    for (i = 3; i < 8; i++)
-        sum += score[i];
-    printf("%d\n", sum);
-    for (i = 0; i < 8; i++)
-    {
-        for (j = 3; j < 8; j++)
-        {
-            if (score[j] == high[i])
-                printf("%d ", i + 1);
-        }
-    }
+	int i, count = 0, N, M;
+	while (scanf("%d %d", &N, &M) != EOF) {
+		count = 0;
+		for (i = N; i <= M; i++)
+		{
+			if (reverse(i) == 1)
+				count++;
+		}
+		printf("%d\n", count);
+	}
 }
