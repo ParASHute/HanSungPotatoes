@@ -1,35 +1,34 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-double paskal(double n, double k)
+int reverse(int n)
 {
-	double i, z = 0, pas = 1;
-	k -= 1;
-	n -= 1;
-	if (k == 0)
-		return 1;
-	else {
-		for (i = 0; i < k; i++)
-		{
-			pas *= ((n - z) / (i + 1.0));
-			z += 1.0;
-		}
-		return pas;
+	int num[10] = { 0 };
+	int len, i;
+	while (n != 0)
+	{
+		num[n % 10]++;
+		n /= 10;
 	}
+	for (i = 0; i < 10; i++)
+	{
+		if (num[i] > 1)  //2개 이상 나왔다면
+			return 0;
+	}
+	return 1;
 }
 
 int main(void)
 {
-	double r, c, w, sum = 0, floor;
-	scanf("%lf %lf %lf", &r, &c, &w);
-	floor = c;  // c를 어디까지 더해줘야 할까? -> floor
-	for (double j = r; j < r + w; j++)
-	{
-		for (double p = c; p <= floor; p++) {
-			sum += paskal(j, p);
-			//printf("%.0lf ", paskal(j, p)); 원소 확인
+	int i, count = 0, N, M;
+	while (scanf("%d %d", &N, &M) != EOF) {
+		count = 0;
+		for (i = N; i <= M; i++)
+		{
+			if (reverse(i) == 1)
+				count++;
 		}
-		floor++;
+		printf("%d\n", count);
 	}
-
-	printf("%.0lf", sum);
 }
