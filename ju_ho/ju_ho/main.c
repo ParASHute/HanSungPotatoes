@@ -2,76 +2,44 @@
 #include <stdio.h>
 
 int main() {
-	int a, k = 0;
-	int b = 0;
-	while (1)
+	int T;
+	int f = 0;
+	int max = -1;
+	int str[1003][6] = { { 0 }, { 0 } };
+	int n[1003] = { 0 };
+	int num = -1;
+	scanf("%d", &T);
+	for (int i = 0; i < T; i++)
 	{
-		scanf("%d", &a);
-		if (a == 0)
+		for (int j = 0; j < 5; j++)
 		{
-			break;
+			scanf("%d", &str[i][j]);
 		}
-		k = a;
-		if (k / 10 == 0)
+	}
+	for (int k = 0; k < T; k++)
+	{
+		for (int q = k+1; q < T; q++)
 		{
-			printf("yes\n");
-		}
-		else if (k / 100 == 0)
-		{
-			if (k / 10 == k % 10)
+			for (int j = 0; j < 5; j++)
 			{
-				printf("yes\n");
-			}
-			else
-			{
-				printf("no\n");
-			}
-		}
-		else if (k / 1000 == 0)
-		{
-			if (k / 100 == k % 10) {
-				printf("yes\n");
-			}
-			else
-			{
-				printf("no\n");
-			}
-		}
-		else if (k / 10000 == 0)
-		{
-			if (k / 1000 == k % 10) {
-				b = k / 100 - (k / 1000 * 10);
-				if (b == k % 100 / 10)
+				if (str[k][j] == str[q][j])
 				{
-					printf("yes\n");
+					str[k][5] += 1;
+					str[q][5] += 1;
+					break;
 				}
-				else
-				{
-					printf("no\n");
-				}
-			}
-			else
-				printf("no\n");
-		}
-		else if (k / 100000 == 0)
-		{
-			if (k / 10000 == k % 10)
-			{
-				b = k / 1000 - (k / 10000 * 10);
-				if (b == k % 100 / 10)
-				{
-					printf("yes\n");
-				}
-				else
-				{
-					printf("no\n");
-				}
-			}
-			else
-			{
-				printf("no\n");
 			}
 		}
 	}
+	for (int i = 0; i < T; i++)
+	{
+		if (max < str[i][5])
+			if (num < i)
+			{
+				num = i;
+				max = str[i][5];
+			}
+	}
+	printf("%d", num + 1);
 	return 0;
 }
