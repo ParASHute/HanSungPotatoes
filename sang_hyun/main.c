@@ -116,3 +116,35 @@ int main() {
 		printf("\n");
 	}
 }
+// 2721번 삼각수의 합;
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	int a,b,c,fin; //여기에 fin=0을 넣으면 i=2일 때 실행에 영향을 미침;
+	scanf("%d", &a); 
+	for (int i = 1; i <= a;i++) {
+		scanf("%d", &b);
+		fin = 0; //고로, i가 바뀔 때마다 초기화를 시켜줘야함.
+		for (int j = 1; j <= b;j++) {
+			c =  j * (j + 1) * (j + 2) / 2;
+			fin = c + fin;
+		}
+		printf("%d\n", fin);
+	}
+}
+//1568번 새
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	int a, b;
+	scanf("%d %d", &a, &b); //각 조건마다 넣어야 할 조건들 추가하자 걍 나머지 정리 느낌이라고 생각하면 가장 좋을 듯 함.
+	if (a < b) {
+		printf("<");
+	}
+	else if (a > b) {
+		printf(">");
+	}
+	else {
+		printf("==");
+	}
+}
