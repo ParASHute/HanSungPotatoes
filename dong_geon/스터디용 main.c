@@ -1,33 +1,25 @@
-#include <stdio.h>
-#include <string.h>
-
-char str[1005];
+#include <stdio.h>  //개짱나는 문제.
 
 int main(void)
 {
-	int len, i, check[4] = { 0 };
-	fgets(str, 1005, stdin);
-	len = strlen(str);
-	for (i = 0; i < len; i++)
+	int n, m, j, apple, basket, dis = 0;
+	scanf("%d %d", &n, &m);
+	basket = m;  
+	scanf("%d", &j);
+	while (j--)
 	{
-		if (str[i] == 'U')
-			check[0]++;
-		if (str[i] == 'C') {
-			if(check[0]>0)
-				check[1]++;
+		scanf("%d", &apple);
+		if (apple > basket)  //사과 개수가 현재 바구니 위치보다 더 클때
+		{
+			dis += apple - basket;
+			basket = apple;
 		}
-		if (str[i] == 'P') {
-			if (check[1] > 0) 
-				check[2]++;
+		else if (apple < basket - (m - 1))
+		{
+			dis += basket - (m - 1) - apple;
+			basket = apple + (m - 1);
 		}
-		if (check[2] > 0) {
-			if (str[i] == 'C')
-				check[3]++;
-		}
+
 	}
-	if (check[0] > 0 && check[1] > 0 && check[2] > 0 && check[3] > 0)
-		printf("I love UCPC");
-	else
-		printf("I hate UCPC");
-	
+	printf("%d", dis);
 }
