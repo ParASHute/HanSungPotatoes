@@ -1,58 +1,61 @@
-#include <stdio.h>
-#include <string.h>
-
-char word[101][10001];
-int wlen[101];
-char temp[10001];
-
-int pelin(char* arr, int len)
-{
-	int i;
-	char b[10001];
-	for (i = 0; i < len; i++)
-	{
-		b[i] = arr[len - 1 - i];
-	}
-	b[len] = '\0';
-
-	if (strcmp(arr, b) == 0) {  //팰린드롬이면 1 return
-		printf("%s\n", b);
-		return 0;
-	}
-	return 1;
-}
-
+#include <stdio.h>  //어려웠다 반례를 5개 맞아버림
 
 int main(void)
 {
-	int t, k, i, j, end;
-	scanf("%d", &t);
-	while (t--) {
-		scanf("%d", &k);
+	int n, i, j, count[1005] = { 0 }, max = 0, student = 0;
+	int c1[1005], c2[1005], c3[1005], c4[1005], c5[1005];
+	scanf("%d", &n);
+	for (i = 1; i <= n; i++)  //i는 학생 번호
+		scanf("%d %d %d %d %d", &c1[i], &c2[i], &c3[i], &c4[i], &c5[i]);
 
-		end = 0;
-		for (i = 0; i < k; i++) {
-			scanf("%s", word[i]);
-			wlen[i] = strlen(word[i]);
-		}
-
-		for (i = 0; i < k; i++)
+	for (i = 1; i <= n; i++)
+	{
+		int check[1005] = { 0 };
+		for (j = 1; j <= n; j++)
 		{
-			for (j = 0; j < k; j++) {
-				if (i != j) {
-					strcpy(temp, word[i]);
-					strcat(temp, word[j]);
-					if (pelin(temp, wlen[i] + wlen[j]) == 0) {
-						end = 1;  //팰린드롬이 나오면 탈출
-						break;
+			if (i != j) {
+				if (c1[i] == c1[j]) {
+					if (check[j] == 0) {
+						count[i]++;
+						check[j] = 1;
+					}
+				}
+				if (c2[i] == c2[j]) {
+					if (check[j] == 0) {
+						count[i]++;
+						check[j] = 1;
+					}
+				}
+				if (c3[i] == c3[j]) {
+					if (check[j] == 0) {
+						count[i]++;
+						check[j] = 1;
+					}
+				}
+				if (c4[i] == c4[j]) {
+					if (check[j] == 0) {
+						count[i]++;
+						check[j] = 1;
+					}
+				}
+				if (c5[i] == c5[j]) {
+					if (check[j] == 0) {
+						count[i]++;
+						check[j] = 1;
 					}
 				}
 			}
-			if (end == 1)  //팰린드롬이 나오면 탈출
-				break;
 		}
-		if (end == 0)  //팰린드롬이 나오지 않았다면
-			printf("0\n");
 	}
+	for (i = 1; i <= n; i++) {
+		if (max < count[i]) {
+			max = count[i];
+			student = i;
+		}
+	}
+	if (max == 0)
+		printf("1");
+	else
+		printf("%d", student);
 
 }
