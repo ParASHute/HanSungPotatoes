@@ -1,20 +1,38 @@
 #include <stdio.h>
-#include <string.h>
 
-int main(void)
+cd[100001];
+
+void num(int n)
 {
-	int i, j, len, sum = 0, plus = 1;
-	char s[101];
-	scanf("%s", s);
-	len = strlen(s);
-	for (i = len-1; i >= 0; i--)
+	int i, sum = 0, cnt = 0;
+	for (i = 1; i <= n / 2; i++)
 	{
-		if (s[i] == ',') {
-			plus = 1;
-			continue;
+		if (n % i == 0) {
+			sum += i;
+			cd[cnt] = i;
+			cnt++;
 		}
-		sum += (plus * (s[i]-'0'));
-		plus *= 10;
 	}
-	printf("%d", sum);
+	if (sum == n)
+	{
+		printf("%d = ", n);
+		for (i = 0; i < cnt - 1; i++)
+			printf("%d + ", cd[i]);
+		printf("%d\n", cd[cnt-1]);
+	}
+	else
+		printf("%d is NOT perfect.\n", n);
+}
+
+int main() 
+{
+	int n;
+	while (1)
+	{
+		scanf("%d", &n);
+		if (n == -1)
+			break;
+		num(n);
+	}
+	return 0;
 }
