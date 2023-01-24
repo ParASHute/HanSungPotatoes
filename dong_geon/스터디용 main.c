@@ -1,79 +1,49 @@
 #include <stdio.h>
 #include <string.h>
 
-void print(char a[6], int len)
+char x[1000001] = { 0 };
+int func(char *x,int len)
 {
-	int i, j, k, o, p;
-	if (len == 1)
-		printf("%s\n", a);
-	else if (len == 2)
-		printf("%c%c\n%c%c\n", a[0], a[1], a[1], a[0]);
-	else if (len == 3)
-	{
-		for (i = 0; i < len; i++)
-		{
-			for (j = 0; j < len; j++)
-			{
-				for (k = 0; k < len; k++) {
-					if (i != j && j != k && i!=k)
-						printf("%c%c%c\n", a[i],a[j],a[k]);
-				}
-			}
-		}
-	}
-	else if (len == 4)
-	{
-		for (i = 0; i < len; i++)
-		{
-			for (j = 0; j < len; j++)
-			{
-				for (k = 0; k < len; k++)
-				{
-					for (o = 0; o < len; o++) {
-						if (i == j || i == k || i == o || j == k || j == o || k == o)
-							continue;
-						else
-							printf("%c%c%c%c\n", a[i], a[j], a[k], a[o]);
-					}
-				}
-			}
-		}
-	}
-	else if(len==5)
-	{
-		for (i = 0; i < len; i++)
-		{
-			for (j = 0; j < len; j++)
-			{
-				for (k = 0; k < len; k++)
-				{
-					for (o = 0; o < len; o++)
-					{
-						for (p = 0; p < len; p++)
-							if (i == j || i == k || i == o || i == p || j == k || j == o || j == p || k == o || k == p || o == p)
-								continue;
-							else
-								printf("%c%c%c%c%c\n", a[i], a[j], a[k], a[o], a[p]);
-					}
-				}
-			}
-		}
-	}
+	int sum = 0, i;
+	for (i = 0; i < len; i++)
+		sum += x[i] - 48;
+
+	//printf("%d\n", sum);
+	return sum;
 }
+
+int func2(int z)
+{
+	int sum = 0;
+	while (z)
+	{
+		sum += z % 10;
+		z /= 10;
+	}
+	//printf("%d\n", sum);
+	return sum;
+}
+
 
 int main() 
 {
-	int n, i, len[201] = { 0 };
-	char a[201][6];
-	scanf("%d", &n);
-	for (i = 0; i < n; i++) {
-		scanf("%s", a[i]);
-		len[i] = strlen(a[i]);
+	int count = 0, len, y;
+	scanf("%s", x);
+	len = strlen(x);
+	if (len == 1)
+		count -= 1;
+	y = func(x,len);
+	while (1) {
+		if (y < 10)
+			break;
+		else
+		{
+			y = func2(y);
+			count++;
+		}
 	}
-
-	for (i = 0; i < n; i++)
-	{
-		printf("Case # %d:\n", i + 1);
-		print(a[i], len[i]);
-	}
+	if (y % 3 == 0 && y != 0)
+		printf("%d\nYES", count+1);
+	else
+		printf("%d\nNO", count+1);
 }
