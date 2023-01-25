@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include <string.h>  //실버3 큰수 A+B
 
 char x[1000001] = { 0 };
 int func(char *x,int len)
