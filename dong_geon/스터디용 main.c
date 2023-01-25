@@ -1,49 +1,62 @@
 #include <stdio.h>
-#include <string.h>  //실버3 큰수 A+B
+#include <string.h> //실버3 큰수 A+B
 
-char x[1000001] = { 0 };
-int func(char *x,int len)
+char a[10005];
+char b[10005];
+char x[10005];
+
+void reverse(char a[])
 {
-	int sum = 0, i;
-	for (i = 0; i < len; i++)
-		sum += x[i] - 48;
-
-	//printf("%d\n", sum);
-	return sum;
-}
-
-int func2(int z)
-{
-	int sum = 0;
-	while (z)
+	int i, len;
+	len = strlen(a);
+	for (i = 0; i < len / 2; i++)
 	{
-		sum += z % 10;
-		z /= 10;
+		char temp = a[i];
+		a[i] = a[len - 1 - i];
+		a[len - i - 1] = temp;
 	}
-	//printf("%d\n", sum);
-	return sum;
 }
-
-
-int main() 
+int main(void) 
 {
-	int count = 0, len, y;
-	scanf("%s", x);
-	len = strlen(x);
-	if (len == 1)
-		count -= 1;
-	y = func(x,len);
-	while (1) {
-		if (y < 10)
-			break;
-		else
-		{
-			y = func2(y);
-			count++;
+	int i, longlen, shortlen, sum = 0, plus = 0;
+	scanf("%s %s", a, b);
+	longlen = strlen(a) >= strlen(b) ? strlen(a) : strlen(b);
+	shortlen = strlen(a) <= strlen(b) ? strlen(a) : strlen(b);
+	reverse(a); reverse(b);
+	for (i = 0; i < longlen; i++)
+	{
+		if (i<shortlen) {  //둘다 값이 있을 떄
+			sum = (a[i] - '0') + (b[i] - '0') + plus;
+			if (sum > 9)
+				plus = 1;
+			else
+				plus = 0;
 		}
+		else  //둘 중 하나가 없음
+		{
+			if (a[i] - '0' >= 0) {
+				sum = a[i] - '0' + plus;
+				if(sum > 9)
+					plus = 1;
+				else
+					plus = 0;
+			}
+			else if (b[i] - '0' >= 0) {
+				sum = b[i] - '0' + plus;
+				if (sum > 9)
+					plus = 1;
+				else
+					plus = 0;
+			}
+		}
+		x[i] = sum % 10 + '0';
 	}
-	if (y % 3 == 0 && y != 0)
-		printf("%d\nYES", count+1);
-	else
-		printf("%d\nNO", count+1);
+
+	if (plus == 1)
+	{
+		x[longlen] = '1';
+	}
+
+	reverse(x);
+	printf("%s", x);
 }
