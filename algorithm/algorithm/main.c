@@ -1,34 +1,17 @@
-/* 백준 2231 정답 */
+/* 백준 1010 정답 */
 #include <stdio.h>
 int main(){
-    int n,a,b = 1,c;
-    int min = 1000000, sum = 0, sum2 = 0;
-    scanf("%d",&n);
-    a = n;
-    for(int i = 0; i < 7; i++){
-        a /= 10;
-        if(a != 0){
-            b++;
+    int T,n,k;
+    scanf("%d",&T);
+    for(int i = 0; i < T; i++){
+        double nP = 1, kP = 1;
+        scanf("%d %d",&k,&n);
+        for(int i = n; i > n - k; i--){
+            nP *= i;
         }
-    }
-    for(int i = 0; i < n; i++){
-        sum = n - i;
-        c = sum;
-        for(int j = 0; j < b; j++){
-            sum2 += sum % 10;
-            sum /= 10;
+        for(int i = k; i > 0; i--){
+            kP *= i;
         }
-        if((n - c) == sum2){
-            if(min > c){
-                min = c;
-            }
-        }
-        sum2 = 0;
-    }
-    if(min == 1000000){
-        printf("0");
-    }
-    else{
-        printf("%d",min);
+        printf("%.0lf\n", (nP/kP));
     }
 }
