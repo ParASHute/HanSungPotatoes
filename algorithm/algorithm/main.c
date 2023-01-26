@@ -1,12 +1,11 @@
 /* 백준 1094 정답 */
 #include <stdio.h>
 int main(){
-    int count = 0;
-    int WB;
+    int WB,count = 0;
     scanf("%d",&WB);
-    while (WB > 0) {
-        WB = (WB-1)&WB;
-        count++;
+    for(int i = 0; WB > 0; i++){
+        if(WB % 2 == 1) count++;
+        WB = WB / 2;
     }
     printf("%d\n", count);
 }
