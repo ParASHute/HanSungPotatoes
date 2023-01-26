@@ -1,17 +1,12 @@
-/* 백준 1010 정답 */
+/* 백준 1094 정답 */
 #include <stdio.h>
 int main(){
-    int T,n,k;
-    scanf("%d",&T);
-    for(int i = 0; i < T; i++){
-        double nP = 1, kP = 1;
-        scanf("%d %d",&k,&n);
-        for(int i = n; i > n - k; i--){
-            nP *= i;
-        }
-        for(int i = k; i > 0; i--){
-            kP *= i;
-        }
-        printf("%.0lf\n", (nP/kP));
+    int count = 0;
+    int WB;
+    scanf("%d",&WB);
+    while (WB > 0) {
+        WB = (WB-1)&WB;
+        count++;
     }
+    printf("%d\n", count);
 }
