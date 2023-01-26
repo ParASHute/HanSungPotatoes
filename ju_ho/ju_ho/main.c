@@ -5,7 +5,7 @@ int main() {
 	int T;
 	int f = 0;
 	int max = -1;
-	int str[1003][6] = { { 0 }, { 0 } };  
+	int str[1003][6] = { { 0 }, { 0 } };  //이거 2차원배열 초기화 이렇게하는거임 ? . ?
 	int n[1003] = { 0 };
 	int num = -1;
 	scanf("%d", &T);
@@ -23,3 +23,5 @@ int main() {
 	printf("%d", num + 1);
 	return 0;
 }
+
+//코드 굉장히 깔끔하네 알아보기 좋음 굳
