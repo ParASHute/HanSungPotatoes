@@ -1,27 +1,32 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-	int T;
-	int f = 0;
-	int max = -1;
-	int str[1003][6] = { { 0 }, { 0 } };  //이거 2차원배열 초기화 이렇게하는거임 ? . ?
-	int n[1003] = { 0 };
-	int num = -1;
-	scanf("%d", &T);
-	for (int i = 0; i < T; i++)
-	
-	for (int i = 0; i < T; i++)
-	{
-		if (max < str[i][5])
-			if (num < i)
-			{
-				num = i;
-				max = str[i][5];
-			}
-	}
-	printf("%d", num + 1);
-	return 0;
+int arr[1000000] = { 0 };
+
+// 오름차순으로 정렬할 때 사용하는 비교함수
+int static compare(const void* first, const void* second)
+{
+    if (*(int*)first > *(int*)second)
+        return 1;
+    else if (*(int*)first < *(int*)second)
+        return -1;
+    else
+        return 0;
 }
 
-//코드 굉장히 깔끔하네 알아보기 좋음 굳
+int main()
+{
+    int array_size = sizeof(arr) / sizeof(int);
+    int i;
+    int N;
+    scanf("%d", &N);
+    // 정렬 전
+    for (i = 0; i < N; i++) scanf("%d", &arr[i]);
+
+    qsort(arr, N, sizeof(int), compare);
+
+    // 정렬 후
+    for (i = 0; i < N; i++) printf("%d\n", arr[i]);
+    return 0;
+}
