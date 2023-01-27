@@ -2,30 +2,22 @@
 #include <stdio.h>
 
 int main() {
-	int n, a = 0, c, d, ans = 1000000, sum;
-	int b = 1;
-	scanf("%d", &n);
-
-	while (n / b != 0) {
-		a++;
-		b *= 10;
-	}
-
-	c = n;
-	d = 9 * a;
-
-	while (1) {
-		sum = 0;
-		n--;
-		int k = 1, x = n;
-		for (int k = 0; k < a; k++) {
-			sum += x % 10;
-			x /= 10;
+	int x, a = 0, b, arr1, arr2, tmp;
+	scanf("%d", &x);
+	for (int i = 0;; i++) {
+		a += i;
+		if (a >= x) {
+			b = i;
+			a -= i;
+			break;
 		}
-		if (sum + n == c && ans > n) ans = n;
-		if (n == c - d)break;
 	}
-
-	if (ans == 1000000) printf("0");
-	else printf("%d", ans);
+	arr1 = x - a;
+	arr2 = b - arr1 + 1;
+	if (b % 2 == 1) {
+		tmp = arr1;
+		arr1 = arr2;
+		arr2 = tmp;
+	}
+	printf("%d/%d", arr1, arr2);
 }
