@@ -4,22 +4,17 @@
 int main(void)
 {
 	int i, len;
-	char s[101], rot[101];
-	fgets(s, 101, stdin);
+	char s[1001], change[1001];
+	scanf("%s", s);
 	len = strlen(s);
 	for (i = 0; i < len; i++)
 	{
-		if (s[i] >= 65 && s[i] <= 77)
-			rot[i] = s[i] + 13;
-		else if (s[i] >= 78 && s[i] <= 90)
-			rot[i] = s[i] -13;
-		else if (s[i] >= 97 && s[i] <= 109)
-			rot[i] = s[i] + 13;
-		else if (s[i] >= 110 && s[i] <= 122)
-			rot[i] = s[i] -13;
+		if (s[i] >= 68 && s[i] <= 90)
+			change[i] = (s[i] - 3);
 		else
-			rot[i] = s[i];
+			change[i] = (s[i] + 23);
 	}
-	rot[len] = '\0';
-	printf("%s", rot);
+	change[len] = '\0';
+	printf("%s", change);
+	return 0;
 }
