@@ -1,29 +1,22 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
+int resum(int k, int n) {
+	if (k==0 || n == 1)
+	{
+		return n;
+	}
+	return resum(k - 1, n) + resum(k, n - 1);
+}
+
 int main() {
-	int N;
-	int a[100] = { 0 };
-	int count = 0,count1=0;
-	scanf("%d", &N);
-	for (int i = 0; i < N; i++)
+	int T;
+	int k, n;
+	scanf("%d", &T);
+	for (int i = 0; i < T; i++)
 	{
-		scanf("%d", &a[i]);
+		scanf("%d %d", &k, &n);
+		printf("%d\n", resum(k, n));
 	}
-	for (int j = 0; j < N; j++)
-	{
-		for (int k = 1; k < 1001; k++)
-		{
-			if (a[j] % k == 0) {
-				count++;
-			}
-		}
-		if (count == 2)
-		{
-			count1++;
-		}
-		count = 0;
-	}
-	printf("%d", count1);
 	return 0;
 }
