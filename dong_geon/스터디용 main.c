@@ -1,8 +1,15 @@
 #include <stdio.h>
-#include <string.h>
 
-int main(void)
-{
-	printf(" git hub 연동 성공했나? 하..\n");
-	printf("동생 노트북 훔침\n");
+int main() {
+	int n, i[101], cnt = 0;
+	scanf("%d", &n);
+	for (int j = 0; j < n; j++)	{
+		scanf("%d", &i[j]);
+		if (i[j] == 1)
+			cnt++;
+	}
+	if (n / 2 < cnt)
+		printf("Junhee is cute!");
+	else
+		printf("Junhee is not cute!");
 }
