@@ -1,31 +1,54 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
+int a[1002] = { 0 };
+int b[1002] = { 0 };
+
 int main() {
-	int N, max, count = 0;
-	int x[200] = { 0 };
-	int y[200] = { 0 };
-	int z[200] = { 0 };
-	scanf("%d", &N);
-	max = N;
-	count = max;
+	int N, K, A, j = 0, B;
+	int count = 0;
+	scanf("%d %d", &N, &K);
+	A = K;
+	B = N;
 	for (int i = 0; i < N; i++)
 	{
-		scanf("%d %d", &x[i], &y[i]);
+		a[i] = i + 1;
 	}
-	for (int i = 0; i < N; i++)
+	printf("<");
+	while (j < N)
 	{
-		for (int j = 0; j < N; j++) {
-			if (x[i] >= x[j] || y[i] >= y[j])
+		for (int i = 0; i < N; i++) {
+			if (K == a[i]) {
+				b[j] = a[i];
+				a[i] = 0;
+				K += A;
+				printf("%d, ", b[j]);
+				j++;
+			}
+			if (K > N)
 			{
-				z[i] = max--;
+				if (a[K-1] == a[i])
+				{
+					if (a[i] != 0) {
+						b[j] = a[i];
+						a[i] = 0;
+						K += A;
+						printf("%d", b[j]);
+						if (j < N-1)
+						{
+							printf(", ");
+						}
+						j++;
+					}
+				}
+			}
+			if (a[i] != 0)
+			{
+				a[N + count] = a[i];
+				count++;
 			}
 		}
-		max = count;
 	}
-	for (int i = 0; i < N; i++)
-	{
-		printf("%d ", z[i]);
-	}
+	printf(">");
 	return 0;
 }
