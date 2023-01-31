@@ -1,19 +1,16 @@
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 
 int main(void)
 {
-	char find[11], ring[22];
-	int i, n, len, cnt = 0;
-	scanf("%s", find);
+	int i, n, len;
+	char arr[30];
 	scanf("%d", &n);
-	len = strlen(find);
-	for (i = 0; i < n; i++) {
-		scanf("%s", ring);
-		strncat(ring, ring, n);
-		if (strstr(ring, find) != NULL)
-			cnt++;
+	for (int i = 0; i < n; i++) {
+		scanf(" %[^\n]s", arr);  //입력버퍼 때문에 한칸 띄어야함
+		if (arr[0] >= 97 && arr[0] <= 122)
+			arr[0] -= 32;
+		printf("%s\n", arr);
 	}
-	printf("%d", cnt);
-	return 0;
 }
