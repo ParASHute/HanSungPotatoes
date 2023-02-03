@@ -1,23 +1,37 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 
+int static compare(const void* fir, const void* sec) {
+	if (*(int*)fir < *(int*)sec)
+		return 1;
+	else if (*(int*)fir > *(int*)sec)
+		return -1;
+	else
+		return 0;
+}
 
 int main() {
-	int A, B, N,val = 0,C = 0;
-	scanf("%d %d %d", &A, &B, &N);
-	if (A % B == 0)
+	int N, K;
+	int a = 0,count = 0;
+	int num[10] = { 0 };
+	scanf("%d %d", &N, &K);
+	for (int i = 0; i < N; i++)
 	{
-		printf("0");
+		scanf("%d", &num[i]);
 	}
-	else {
-		val = A % B;
-		for (int i = 0; i < N; i++)
-		{
-			val = ((val) * 10);
-			C = val / B;
-			val = val % B;
+	qsort(num, N, sizeof(int), compare);
+	for (int i = 0; i < N; i++)
+	{
+		if (K / num[i] != 0) {
+			a = K / num[i];
+			count += a;
+			K = K - (num[i] * a);
 		}
-		printf("%d", C);
+		if (K == 0) {
+			break;
+		}
 	}
+	printf("%d", count);
 	return 0;
 }
