@@ -20,7 +20,7 @@ int main() {
 		{
 			gets(str[i]);
 		}
-		for (int i = 0; i < 2*n-1; i++)
+		for (int i = 0; i < 2 * n - 1; i++)
 		{
 			scanf("%d %c", &a, &arr);
 			num1[a - 1]++;
