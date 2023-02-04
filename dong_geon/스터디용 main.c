@@ -1,21 +1,33 @@
 #include <stdio.h>
+//생각보다 좀 까다로운 문제
 
 int main() {
-	char d[7][4] = { "SUN","MON","TUE","WED" ,"THU" ,"FRI" ,"SAT" };
-	int i, x, y, day = 0;
-	scanf("%d %d", &x, &y);
-	if (x > 1) {
-		day += 31;
-		for (i = 2; i < x; i++)
-		{
-			if (i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12)
-				day += 31;
-			else if (i == 2)
-				day += 28;
-			else
-				day += 30;
+	int m[10], n, sum[10] = { 0 }, dif[10] = { 0 };
+
+	for (int i = 0; i < 10; i++)
+		scanf("%d", &m[i]);
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j <= i; j++) {
+			sum[i] += m[j];
+			if (sum[i] >= 100)
+				break;
+		}
+
+		if (sum[i] < 100)
+			dif[i] = 100 - sum[i] + 1;
+		else
+			dif[i] = sum[i] - 100;
+	}
+	int min_dif = 100;
+	int index;
+	for (int i = 0; i < 10; i++)
+	{
+		if (dif[i] < min_dif) {
+			min_dif = dif[i];
+			index = i;
 		}
 	}
-	day += y;
-	printf("%s", d[day % 7]);
+	printf("%d", sum[index]);
 }
