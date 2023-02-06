@@ -1,29 +1,22 @@
 #include <stdio.h>
 
-int main()
-{
-	int k, n, x, tmp;
-	int num[10] = { 0 };
-	scanf("%d %d", &n, &k);
-	for (int i = 0; i < k; i++) {
-		scanf("%d", &x);
-		num[x] = 1;
-	}
-	
-	for (int i = n; i > 0; i--)
+int main() {
+	int a[5][4], score[5]={0}, maxscore = 0, max = 0;
+	for (int i = 0; i < 5; i++)
 	{
-		tmp = 1;
-		for (int j = i; j > 0; j /= 10)
+		for (int j = 0; j < 4; j++)
 		{
-			if (num[j % 10] != 1)
-			{
-				tmp = 0;
-				break;
-			}
-		}
-		if (tmp == 1) {
-			printf("%d", i);
-			break;
+			scanf("%d", &a[i][j]);
+			score[i] += a[i][j];
 		}
 	}
+	for (int i = 0; i < 5; i++)
+	{
+		if (score[i] > maxscore)
+		{
+			maxscore = score[i];
+			max = i;
+		}
+	}
+	printf("%d %d", max + 1, score[max]);
 }
