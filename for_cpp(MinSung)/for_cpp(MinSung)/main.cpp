@@ -1,29 +1,38 @@
 #include <iostream>
-
-namespace A{
-    void y(){
-        std::cout << "A모듈의 함수 y"<<std::endl;
+using namespace std;
+auto disco(double a, int b) -> decltype(a/b){ // disco의 타입은 auto로 a/b의 형태를 보고 결정한다
+    if(b != 0){
+        return a/b;
     }
+    else return 0;
 }
-
-namespace B{
-    void y(){
-        std::cout << "B모듈의 함수 y"<< std::endl;
-    }
+inline int sq(int a){
+    return a * a;
 }
-int foo(int x){
-    return x;
-}
+// 컴파일러에게 가급적 메크로 함수 처럼 처리 하라 요청한 함수임
+// 컴파일러의 판단에 따라 성능 향상에 방해가 된다 생각하면 무시한다.
+// inline을 통해 메크로 함수를 문법 내로 포함 시켰기 떄문에 전처리가 아닌 Cpp문법을 이해 할수 있는 컴파일러에 의해 처리 된다.
+#define SQ(x) x * x
+#define sQ(x) (x) * (x)
+//13줄과 14줄에 있는 것 둘다 메크로 함수임
 
 int main() {
-    int result = ::foo(9); // -> int result = foo(9);와 같다. 이름 공간이 없는 곳에 정의된 함수 foo라는 듯 하다.
-    int result2 = foo(0);
-    std::cout << result << std::endl; //std이름 공간에 있는 cout을 사용 -> std는 이 프로그렘의 전역 밖에 있는 이름공간이다.
-    // endl는 \n과 같은 역할을 한다(xcord상에서는 뒤에 괄호를 열고 뭔가를 넣는거 같지만, 자새한 사용법은 아직 나오지 않음)
-    std::cout << result2 << std::endl;
-    // 변수 선언이 ::이 생락된 체로 foo함수에다 담았는데, 이렇게 선언해도 결과값은 똑같다.
-    A::y();
-    // A (라는 이름 공간) :: (에 있는) y() (함수)
-    B::y();
-    // 위와 같은 함수지만 다른 이름공간에 선언 된 함수 y이다.
+    double x = 3;
+    decltype(x) y = 3; // x가 더블 형으로 선언이 되 있으니 y또한 더블형으로 선언 된다.
+    cin >> x; // -> scanf("%d, &x); 의 역할을 한다
+    auto a = disco(x, y); //a 는 dico함수에서 리턴 되는 값에 따라 자동으로 값을 결정한다
+    cout << a << endl; // -> printf("%d, a)와 같은 역할이다. 뒤에 endl은 \n의 역할
+    
+    int arr[5] = {1,2,3,4,5};
+    for(size_t i = 0; i < 5; i++) cout << arr[i] << ' ';
+    //size_t는 int와 같은 역할을 하고 있다. 하지만 배열을 동반한 반복문에선 size_t를 동반하는 것을 권장한다.
+    //size_t의 크기는 컴파일러의 비트(32비트 or 64비트)에 따라 달라지는데 32일땐 4바이트 64비트에선 8비트로 잡한다.
+    
+    int b;
+    cin >> b;
+    cout << sq(b + 9);
+    cout << sQ(b + 9);
+    cout << SQ(b + 9);
+    //31번 줄과 33번 줄은 서로 같은 값을 뽑아 낸다
+    //이 식의 경우엔 b + 9 * b + 9의 형태의 식이 되어 9 * b가 먼저 연산 된다. -> 따라서 의도한 계산 식이 나오지 않는다.
 }
