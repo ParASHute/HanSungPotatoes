@@ -132,19 +132,31 @@ int main() {
 		printf("%d\n", fin);
 	}
 }
-//1568번 새
+// 오름차순 
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 int main() {
-	int a, b;
-	scanf("%d %d", &a, &b); //각 조건마다 넣어야 할 조건들 추가하자 걍 나머지 정리 느낌이라고 생각하면 가장 좋을 듯 함.
-	if (a < b) {
-		printf("<");
+	int arr[3], tempt;
+	scanf("%d %d %d", &arr[0], &arr[1], &arr[2]);
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (arr[i] < arr[j]) {
+				tempt = arr[j];
+				arr[j] = arr[i];
+				arr[i] = tempt;
+			}
+		}
 	}
-	else if (a > b) {
-		printf(">");
-	}
-	else {
-		printf("==");
+	printf("%d %d %d", arr[0], arr[1], arr[2]);
+}
+//1009번 (2/6일)
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	int a,x,y,n;
+	scanf("%d", &a);
+	for (int i = 0; i < a; i++) {
+		scanf("%d %d", &x, &y);
+		n = (x ^ y) % 10;
 	}
 }
