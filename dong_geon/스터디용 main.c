@@ -1,29 +1,34 @@
-#include <stdio.h>
+#include <stdio.h> 
 
-int main()
+int main(void)
 {
-	int k, n, x, tmp;
-	int num[10] = { 0 };
-	scanf("%d %d", &n, &k);
-	for (int i = 0; i < k; i++) {
-		scanf("%d", &x);
-		num[x] = 1;
+	int k, i, arr[100001] = { 0 }, zero[100001] = { 0 };
+	int sum = 0;
+	scanf("%d", &k);
+	for (i = 0; i < k; i++) {
+		scanf("%d", &arr[i]);
+		if (arr[i] == 0)
+			zero[i] = 1;
 	}
-	
-	for (int i = n; i > 0; i--)
-	{
-		tmp = 1;
-		for (int j = i; j > 0; j /= 10)
+
+	for (i = 1; i <= k; i++) {
+		if (zero[i] == 1)
 		{
-			if (num[j % 10] != 1)
+			int index = i;
+			while (1)
 			{
-				tmp = 0;
-				break;
+				if (arr[index - 1] != 0) {
+					arr[index - 1] = 0;
+					break;
+				}
+				else
+					index--;
 			}
 		}
-		if (tmp == 1) {
-			printf("%d", i);
-			break;
-		}
 	}
+
+	for (i = 0; i < k; i++)
+		sum += arr[i];
+
+	printf("%d", sum);
 }
