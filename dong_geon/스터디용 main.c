@@ -1,28 +1,34 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-int static compare(const void* first, const void* second)
-{
-    if (*(int*)first < *(int*)second)
-        return 1;
-    else if (*(int*)first > *(int*)second)
-        return -1;
-    else
-        return 0;
-}
+#include <stdio.h> 
 
 int main(void)
 {
-    int k, w = 0, r[100001], count = 1;
+	int k, i, arr[100001] = { 0 }, zero[100001] = { 0 };
+	int sum = 0;
 	scanf("%d", &k);
-	for (int i = 0; i < k; i++)
-		scanf("%d", &r[i]);
-	qsort(r,k,4,compare);
-    for (int i = 0; i < k; i++)
-    {
-        if (w < r[i] * count)
-            w = r[i] * count;
-        count++;
-    }
-    printf("%d", w);
+	for (i = 0; i < k; i++) {
+		scanf("%d", &arr[i]);
+		if (arr[i] == 0)
+			zero[i] = 1;
+	}
+
+	for (i = 1; i <= k; i++) {
+		if (zero[i] == 1)
+		{
+			int index = i;
+			while (1)
+			{
+				if (arr[index - 1] != 0) {
+					arr[index - 1] = 0;
+					break;
+				}
+				else
+					index--;
+			}
+		}
+	}
+
+	for (i = 0; i < k; i++)
+		sum += arr[i];
+
+	printf("%d", sum);
 }
