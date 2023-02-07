@@ -1,21 +1,28 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+int static compare(const void* first, const void* second)
+{
+    if (*(int*)first < *(int*)second)
+        return 1;
+    else if (*(int*)first > *(int*)second)
+        return -1;
+    else
+        return 0;
+}
 
 int main(void)
 {
-	int h, m, s, time;
-	int nh, nm, ns, ntime;
-	int missiontime, mh, mm, ms;
-	scanf("%d:%d:%d", &h, &m, &s);
-	scanf("%d:%d:%d", &nh, &nm, &ns);
-	
-	time = h * 3600 + m * 60 + s;
-	ntime = nh * 3600 + nm * 60 + ns;
-	missiontime = ntime - time;
-	if (missiontime < 0)
-		missiontime += 3600 * 24;
-	
-	mh = missiontime / 3600;
-	mm = missiontime % 3600 / 60;
-	ms = missiontime % 60;
-	printf("%02d:%02d:%02d", mh, mm, ms);
+    int k, w = 0, r[100001], count = 1;
+	scanf("%d", &k);
+	for (int i = 0; i < k; i++)
+		scanf("%d", &r[i]);
+	qsort(r,k,4,compare);
+    for (int i = 0; i < k; i++)
+    {
+        if (w < r[i] * count)
+            w = r[i] * count;
+        count++;
+    }
+    printf("%d", w);
 }
