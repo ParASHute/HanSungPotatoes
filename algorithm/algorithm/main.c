@@ -1,28 +1,22 @@
 #include <stdio.h>
-#include <stdlib.h>
-int compare(const void* fst, const void* snd){
-    if(*(int*) fst < *(int*) snd) return 1;
-    if(*(int*) fst > *(int*) snd) return -1;
-    else return 0;
-}
-int main() {
-    int arr[10] = {0};
-    int count = 0;
-    int N, K;
-    scanf("%d %d", &N, &K);
-    for(int i = 0; i < N; i++){
-        scanf("%d", &arr[i]);
-    }
-    qsort(arr, N, sizeof(int), compare);
+int main(){
+    int arr[100000] = {0};
+    int n,a;
+    int k = 0, count = 0, sum = 0;
+    scanf("%d",&n);
     while(1){
-        for(int i = 0; i < N; i++){
-            if(K - arr[i]  >= 0){
-                K = K - arr[i];
-                count++;
-                break;
-            }
+        scanf("%d",&a);
+        count++;
+        if(a == 0){
+            k--;
+            arr[k] = 0;
         }
-        if(K == 0) break;
+        else{
+            arr[k] = a;
+            k++;
+        }
+        if(count == n) break;
     }
-    printf("%d", count);
+    for(int i = 0; i < n; i++) sum += arr[i];
+    printf("%d",sum);
 }
