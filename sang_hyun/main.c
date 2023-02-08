@@ -5,19 +5,55 @@
 #include<math.h>
 
 int main() {
-	int a, n;
-	double x, y;
+	int a, x, y, n, z;
 	scanf("%d", &a);
 
 	for (int i = 0; i < a; i++) {
-		scanf("%lf %lf", &x, &y);
-		n = (int)pow((double)x, (double)y)%10;
+		scanf("%d %d", &x, &y);
 
-		if (n == 0) {
-			printf("10\n");
+		n = x % 10;
+
+		if (n = 0) { 
+			printf("10");
 		}
-		else {
-			printf("%d\n", n);
+		if (n = 1) {
+			printf("1");
+		}
+		if (n = 2) {
+			int arr1[4] = { 2,4,8,6 };
+			z = (y % 4) - 1;
+			printf("%d", arr1[z]);
+		}
+		if (n = 3) {
+			int arr2[4] = { 3,9,7,1 };
+			z = (y % 4) - 1;
+			printf("%d", arr2[z]);
+		}
+		if (n = 4) {
+			int arr3[2] = { 4,6 };
+			z = (y % 2) - 1;
+			printf("%d", arr3[z]);
+		}
+		if (n = 5) {
+			printf("5");
+		}
+		if (n = 6) {
+			printf("6");
+		}
+		if (n = 7) {
+			int arr4[4] = { 7,9,3,1 };
+			z = (y % 4) - 1;
+			printf("%d", arr4[z]);
+		}
+		if (n = 8) {
+			int arr5[4] = { 8,4,2,6 };
+			z = (y % 4) - 1;
+			printf("%d", arr5[z]);
+		}
+		if (n = 9) {
+			int arr6[2] = { 9,1 };
+			z = (y %  2) - 1;
+			printf("%d", arr6[z]);
 		}
 	}
 }
