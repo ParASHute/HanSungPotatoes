@@ -25,14 +25,14 @@ int main() {
 			printf("%d", arr1[z]);
 		}
 		if (n = 3) {
-			int arr2[4] = { 3,9,7,1 };
+			int arr[4] = { 3,9,7,1 };
 			z = (y % 4) - 1;
-			printf("%d", arr2[z]);
+			printf("%d", arr[z]);
 		}
 		if (n = 4) {
-			int arr3[2] = { 4,6 };
+			int arr[2] = { 4,6 };
 			z = (y % 2) - 1;
-			printf("%d", arr3[z]);
+			printf("%d", arr[z]);
 		}
 		if (n = 5) {
 			printf("5");
@@ -41,19 +41,19 @@ int main() {
 			printf("6");
 		}
 		if (n = 7) {
-			int arr4[4] = { 7,9,3,1 };
+			int arr[4] = { 7,9,3,1 };
 			z = (y % 4) - 1;
-			printf("%d", arr4[z]);
+			printf("%d", arr[z]);
 		}
 		if (n = 8) {
-			int arr5[4] = { 8,4,2,6 };
+			int arr[4] = { 8,4,2,6 };
 			z = (y % 4) - 1;
-			printf("%d", arr5[z]);
+			printf("%d", arr[z]);
 		}
 		if (n = 9) {
-			int arr6[2] = { 9,1 };
+			int arr[2] = { 9,1 };
 			z = (y %  2) - 1;
-			printf("%d", arr6[z]);
+			printf("%d", arr[z]);
 		}
 	}
 }
