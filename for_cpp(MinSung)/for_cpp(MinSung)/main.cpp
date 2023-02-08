@@ -1,38 +1,48 @@
 #include <iostream>
 using namespace std;
-auto disco(double a, int b) -> decltype(a/b){ // disco의 타입은 auto로 a/b의 형태를 보고 결정한다
-    if(b != 0){
-        return a/b;
-    }
-    else return 0;
+enum suit {clubes, diamonds, hreats, spades};
+//enum은 열거 타입니다. 열거타입은 변수에 할당값을 넣어주는 일정의 배열이다
+//clubes가 0의 값을 가지고 있으며 순서대로 0, 1, 2, 3이 할당된다 따라서 정수와 비교 연산이 가능하다
+//하지만 정수를 직접 배정해 줄수 없다.
+struct card{
+    enum suit s;
+    int rank;
+};
+struct card deck[52];
+//c에서의 구조체와 같다(cpp는 c를 포함하고 있다는 것을 잊지말자)
+
+struct Card{
+    enum suit s;
+    int Rank;
+};
+Card Deck[52];
+//cpp에서는 앞에 struck를 안붙인 상태로 선언이 가능하다.
+enum class Suit{clube, diamond, hreat, spade};
+//위에와 같은 열거형변수지만, 위에는 값이 할당 되있으므로 3인 정수가 아닌 이름 그자체로서 비교를 하게된다.
+//c에서의 형식과는 다르게 정수와 비교연산이 불가능하다
+
+double ave(double a, double b){
+    return ((a+b)/2);
 }
-inline int sq(int a){
-    return a * a;
+
+double ave(double a, double b, double c){
+    return ((a+b+c)/3);
 }
-// 컴파일러에게 가급적 메크로 함수 처럼 처리 하라 요청한 함수임
-// 컴파일러의 판단에 따라 성능 향상에 방해가 된다 생각하면 무시한다.
-// inline을 통해 메크로 함수를 문법 내로 포함 시켰기 떄문에 전처리가 아닌 Cpp문법을 이해 할수 있는 컴파일러에 의해 처리 된다.
-#define SQ(x) x * x
-#define sQ(x) (x) * (x)
-//13줄과 14줄에 있는 것 둘다 메크로 함수임
+// 24번 줄에 선언된 ave와 28번에 선언된 ave 함수는 이름이 같기 때문에 c에서는 이런 형식으로 선언 할수 없다.
+// 하지만 cpp애서는 오버로딩이라고 부르며 용시 들어가는 파라미터 리스트(함수 뒤 선언된 변수의 형태 또는 개수)가 다르면
+// 같은 이름으로 선언 해도 된다.
+// 이때 함수를 선언했을때 파라미터의 개수와 타입을 확인해 컴파일러가 둘중 하나르 골라 실행한다.
 
 int main() {
-    double x = 3;
-    decltype(x) y = 3; // x가 더블 형으로 선언이 되 있으니 y또한 더블형으로 선언 된다.
-    cin >> x; // -> scanf("%d, &x); 의 역할을 한다
-    auto a = disco(x, y); //a 는 dico함수에서 리턴 되는 값에 따라 자동으로 값을 결정한다
-    cout << a << endl; // -> printf("%d, a)와 같은 역할이다. 뒤에 endl은 \n의 역할
-    
-    int arr[5] = {1,2,3,4,5};
-    for(size_t i = 0; i < 5; i++) cout << arr[i] << ' ';
-    //size_t는 int와 같은 역할을 하고 있다. 하지만 배열을 동반한 반복문에선 size_t를 동반하는 것을 권장한다.
-    //size_t의 크기는 컴파일러의 비트(32비트 or 64비트)에 따라 달라지는데 32일땐 4바이트 64비트에선 8비트로 잡한다.
-    
-    int b;
-    cin >> b;
-    cout << sq(b + 9);
-    cout << sQ(b + 9);
-    cout << SQ(b + 9);
-    //31번 줄과 33번 줄은 서로 같은 값을 뽑아 낸다
-    //이 식의 경우엔 b + 9 * b + 9의 형태의 식이 되어 9 * b가 먼저 연산 된다. -> 따라서 의도한 계산 식이 나오지 않는다.
+    const int VAL = 10;
+    // c에서의 const랑 같은 역할임
+    double e = 2.71828;
+    const double* doublePTR = &e;
+    // 7번줄에서 선언한 변수 e에 값을 상수로 가지는 변수를 선언
+    // *doublePTR = 30.3027;을 선언한다면 컴파일 오류가 ㄸ<ㅁ
+    // 왜냐하면 위에서 e의 값을 상수로서 선언한 것이기 때문
+    // 또다른 변수 r을 선언한후 doublePTR = &r;이라고 해도 오류 발생함
+    cout << ave(2.0, 3.0 , 3.5) << endl;
+    cout << ave(2.0, 3.0);
+    // 둘은 같은 함수를 선언했지만 안에 파라미터값의 개수가 차이가 나므로 오버로딩을 통해 컴파일러가 알아서 함수를 호출 실행한다.
 }
