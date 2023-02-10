@@ -1,24 +1,23 @@
 #include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//#include <time.h>
+//typedef struct{
+//    int z;
+//    int y;
+//}name;
+int gcd(int a, int b){
+    if (a % b == 0) return b;
+    else return gcd(b, a % b);
+}
 int main(){
-    int arr[100000] = {0};
-    int n,a;
-    int k = 0, count = 0, sum = 0;
+    int n;
+    int arr[100] = {0};
+    int ans[200] = {0};
     scanf("%d",&n);
-    while(1){
-        scanf("%d",&a);
-        count++;
-        if(a == 0){
-            k--;
-            arr[k] = 0;
-        }
-        else{
-            arr[k] = a;
-            k++;
-        }
-        if(count == n) break;
-    }
-    for(int i = 0; i < n; i++) sum += arr[i];
-    printf("%d",sum);
+    for(int i = 0; i < n; i++) scanf("%d",&arr[i]);
+    for(int i = 1; i < n; i++) printf("%d/%d\n",arr[0] / gcd(arr[0],arr[i]), arr[i] / gcd(arr[0],arr[i]));
+    
 }
 //    clock_t start, finish;
 //    double duration;
