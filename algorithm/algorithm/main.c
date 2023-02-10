@@ -11,13 +11,20 @@ int gcd(int a, int b){
     else return gcd(b, a % b);
 }
 int main(){
-    int n;
+    int n,a;
     int arr[100] = {0};
-    int ans[200] = {0};
     scanf("%d",&n);
-    for(int i = 0; i < n; i++) scanf("%d",&arr[i]);
-    for(int i = 1; i < n; i++) printf("%d/%d\n",arr[0] / gcd(arr[0],arr[i]), arr[i] / gcd(arr[0],arr[i]));
-    
+    for(int i = 0; i < n; i++){
+        long long sum = 0;
+        scanf("%d",&a);
+        for(int j = 0; j < a; j++) scanf("%d",&arr[j]);
+        for(int k = 0; k < a - 1; k++){
+            for(int l = k + 1; l < a; l++){
+                sum += gcd(arr[k], arr[l]);
+            }
+        }
+        printf("%lld\n",sum);
+    }
 }
 //    clock_t start, finish;
 //    double duration;
