@@ -2,36 +2,24 @@
 
 int main(void)
 {
-	char chess[51][51];
-	int x, y, i, j, min = 65;
-	scanf("%d %d", &x, &y);
-	for (i = 0; i < x; i++) {
-		scanf("%s", chess[i]);
-	}
-
-	for (i = 0; i < x-7; i++) {
-		for (j = 0; j < y-7; j++) {
-			int white = 0;
-			int black = 0;
-			for (int z = i; z < i + 8; z++) {
-				for (int k = j; k < j + 8; k++) {
-					if ((z + k) % 2 == 0) {
-						if (chess[z][k] == 'B')
-							white++;
-						else
-							black++;
-					}
-					else {
-						if (chess[z][k] == 'B')
-							black++;
-						else
-							white++;
-					}
-				}
-			}
-			min = black > min ? min : black;
-			min = white > min ? min : white;
-		}
-	}
-	printf("%d", min);
+	int n;
+	scanf("%d", &n);
+	if (n < 10)
+		printf("%d", n);
+	else if (n < 100)
+		printf("%d", 9 + (n - 9) * 2);
+	else if (n < 1000)
+		printf("%d", 9 + 90 * 2 + (n - 99) * 3);
+	else if (n < 10000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + (n - 999) * 4);
+	else if (n < 100000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + (n - 9999) * 5);
+	else if (n < 1000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + (n - 99999) * 6);
+	else if (n < 10000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + 900000 * 6 + (n - 999999) * 7);
+	else if (n < 100000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + 900000 * 6 + 9000000 * 7 + (n - 9999999) * 8);
+	else if (n == 100000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + 900000 * 6 + 9000000 * 7 + 90000000 * 8 + (n - 99999999) * 9);
 }
