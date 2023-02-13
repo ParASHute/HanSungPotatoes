@@ -1,26 +1,25 @@
-#include <stdio.h> 
-#include <string.h>
+#include <stdio.h>
 
-char s[100001];
-char t[100001];
 int main(void)
 {
-	int slen, tlen, i;
-	while (scanf("%s %s", s, t)!=EOF) {
-		slen = strlen(s);
-		tlen = strlen(t);
-		
-		int count = 0;
-		for (i = 0; i < tlen; i++)
-		{
-			if (s[count] == t[i])
-				count++;
-			if (count == slen) {
-				printf("Yes\n");
-				break;
-			}
-		}
-		if (count != slen)
-			printf("No\n");
-	}
+	int n;
+	scanf("%d", &n);
+	if (n < 10)
+		printf("%d", n);
+	else if (n < 100)
+		printf("%d", 9 + (n - 9) * 2);
+	else if (n < 1000)
+		printf("%d", 9 + 90 * 2 + (n - 99) * 3);
+	else if (n < 10000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + (n - 999) * 4);
+	else if (n < 100000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + (n - 9999) * 5);
+	else if (n < 1000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + (n - 99999) * 6);
+	else if (n < 10000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + 900000 * 6 + (n - 999999) * 7);
+	else if (n < 100000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + 900000 * 6 + 9000000 * 7 + (n - 9999999) * 8);
+	else if (n == 100000000)
+		printf("%d", 9 + 90 * 2 + 900 * 3 + 9000 * 4 + 90000 * 5 + 900000 * 6 + 9000000 * 7 + 90000000 * 8 + (n - 99999999) * 9);
 }
