@@ -1,17 +1,28 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
-	int n, f, cnt = 0;
-	scanf("%d", &n);
-	scanf("%d", &f);
-	n /= 100;
-	n *= 100;
-	while (1) {
-		if (n % f == 0)
-			break;
-		n++;
-		cnt++;
+	char arr[6][16] = { 0 };
+	int len = 0;
+	for (int i = 0; i < 5; i++) {
+		scanf("%s", arr[i]);
+		len += strlen(arr[i]);
 	}
-	printf("%02d", cnt);
+
+	int index = 0, plus = 0;
+	while (1) {
+		for (int i = 0; i < 5; i++)
+		{
+			if (plus == len)
+				break;
+			if (arr[i][index] != '\0') {
+				printf("%c", arr[i][index]);
+				plus++;
+			}
+		}
+		if (plus == len)
+			break;
+		index++;
+	}
 }
