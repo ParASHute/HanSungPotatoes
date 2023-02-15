@@ -4,4 +4,5 @@
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=ktwykhs)](https://solved.ac/ktwykhs/)  
 한성대학교 IT공과대학 컴퓨터공학부 2091155 김주호  
 한성대학교 IT공과대학 컴퓨터공학부 2071084 이동건  
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=ktwykhs)](https://solved.ac/dkdk6517/)  
 한성대학교 IT공과대학 컴퓨터공학부 2271241 윤진영
