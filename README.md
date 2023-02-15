@@ -1,4 +1,4 @@
-HanSung Potatoes(한성대학교 IT공과대 컴퓨터공학부 스터디 그룹) 활동 기간 : '22.12.26 ~ '23.2.17  
+#HanSung Potatoes(한성대학교 IT공과대 컴퓨터공학부 스터디 그룹) 활동 기간 : '22.12.26 ~ '23.2.17  
   
 ![감자부기](https://user-images.githubusercontent.com/119108596/219055154-33261f56-d889-444b-ad4e-17bfe5215e98.jpeg)  
 <img src="https://img.shields.io/badge/c-white?style=flat&logo=clang&logoColor=#A8B9CC"/>  
