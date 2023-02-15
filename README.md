@@ -11,3 +11,5 @@
   
 한성대학교 IT공과대학 컴퓨터공학부 2271241 윤진영  
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=abba4639)](https://solved.ac/abba4639/)  
+  
+Special Thanks to 진영!! 충성!! 한성감자들(hansung potatoes)은 윤진영군의 무사 입대를 응원하며, 동시에 무사 전역을 기원합니다!
