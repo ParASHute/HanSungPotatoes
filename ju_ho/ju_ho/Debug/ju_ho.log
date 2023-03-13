@@ -1,3 +1,2 @@
 ﻿  main.c
-C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\ju_ho\main.c(20,13): warning C4553: '==': 식의 결과가 사용되지 않습니다. '='을(를) 의도했습니까?
   ju_ho.vcxproj -> C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\Debug\ju_ho.exe
