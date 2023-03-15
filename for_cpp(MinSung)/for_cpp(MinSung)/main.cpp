@@ -1,8 +1,12 @@
 #include <iostream>
 using namespace std;
 int main(){
-    long long n, m;
-    cin >> n >> m;
-    cout << std::abs(n - m) << endl;
+    string str;
+    cin >> str;
+    for(int i = 0; str.length()>i; i++){
+        if(str[i] >= 65 && str[i] <= 90) str[i] += 32;
+        else str[i] -= 32;
+    }
+    cout << str << endl;
 }
-// abs는 절대값, using을 썼는데도 std를 쓴 이유는 std::abs는 long long형에 대해서도 오버로딩이 되어 있어 오버플로우를 방지하기 때문이다.
+// 변수.length() == strlength(변수)
