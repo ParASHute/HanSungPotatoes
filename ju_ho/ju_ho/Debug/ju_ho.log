@@ -1,3 +1,2 @@
-﻿  main.c
-C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\ju_ho\main.c(12,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  main.cpp
   ju_ho.vcxproj -> C:\Users\김주호\Documents\GitHub\HanSungPotatoes\ju_ho\Debug\ju_ho.exe
